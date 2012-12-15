@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>A Fibonacci Palindrome Problem</title>
+    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="o-blog version 1.2-120-g06a5a11"/>
+    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
+    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
+    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
+    
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+	<div class="container">
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+	  <a class="brand" href="../../../index.html">More is Different</a>
+	  <div class="nav-collapse collapse">
+	    <ul>
+<li><a href="../../../index.html"><i>icon-home icon-white</i> Home</a>
+
+</li>
+<li><a href="#"><i>icon-file icon-white</i> Posts</a>
+<ul>
+<li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a>
+</li>
+<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a>
+</li>
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a>
+</li>
+<li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
+</li>
+</ul>
+
+
+
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="subnav subnav-fixed visible-desktop">
+      <div class="container">
+	<ul class="breadcrumb">
+  <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
+  <li><a href="../../../posts/index.html">Posts</a> <span class="divider">/</span></li><li><a href="../../../posts/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../posts/2012/12/index.html">12</a> <span class="divider">/</span></li><li>A Fibonacci Palindrome Problem</li>
+  </ul>
+
+      </div>
+    </div>
+    <div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">15</div>
+	  <div class=" date-m"><a href="../../../posts/2012/12/index.html">Dec</a></div>
+	  <div class=" date-y"><a href="../../../posts/2012/index.html">2012</a>
+	  </div>
+	</div>
+	<div class="span1">
+	  <div class="qr-code">
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3A%2F%2Fmorediff.info%2Fposts%2F2012%2F12%2F15_a-fibonacci-palindrome-problem.html"
+       alt="qr-code" />
+</div>
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">A Fibonacci Palindrome Problem</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../posts/2012/12/15_score-my-mutt.html"><i class="icon-chevron-left"></i>&nbsp;Score My Mutt</a></li><li class="next" style="text-align: right;"><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction&nbsp;<i class="icon-chevron-right"></i></a></li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">Algorithm Description</h3>
+<div class="outline-text-3" id="text-1">
+
+<p>Scan from the beginning for the sequence to the end to find out all
+possible Fibonacci sequence. For each found Fibonacci sequence,
+compare the known longest palindrome so far with the size of the
+current Fibonacci. If the size of the current Fibonacci is bigger the
+known longest Fibonacci palindrome, then find the longest palindrome
+from the current Fibonacci.  Any parts of a Fibonacci sequence are
+also Fibonacci sequences. Scanning the sequence costs O(n) time.
+</p>
+<p>
+To find the longest palindrome from a sequence, we use a central
+expanding method. Scanning from the beginning to the end of the
+sequence, for each item, expand to its right and left hand at the same
+pace. For example: 1 1 [ 2 ] 1 1 &ndash;&gt; expand from position 2 to
+position 1 and 3, then to the position 0 and 4.  1 1 [2 2] 1 1 &ndash;&gt;
+expand from position 2 3 to position 1 and 4, then to the position 0
+and 5 This will take O(m &times; m) time, where m is the length of the given
+sub-sequence.
+</p>
+<p>
+So the total time cost is O(n &times; m<sup>2</sup>). The worst case is O(n<sup>3</sup>) in
+theory. In practice, it should work faster.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">Source Code</h3>
+<div class="outline-text-3" id="text-2">
+
+
+
+
+<pre class="src src-c++"><span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">file: FibonacciPalindrome.hpp</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">THE Fibonacci palindrome problem</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">--------------------------------</span>
+<span style="color: #94bff3;">#if</span><span style="color: #94bff3;">n</span><span style="color: #94bff3;">def</span> _FIBONACCI_PALINDROME
+<span style="color: #94bff3;">#define</span> <span style="color: #dfaf8f;">_FIBONACCI_PALINDROME</span>
+
+
+ <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Find the longest Fibonacci palindrome from a given integer sequence.</span>
+ <span style="color: #7cb8bb;">void</span> <span style="color: #8cd0d3;">FindFibonacciPalindrome</span>(<span style="color: #f0dfaf; font-weight: bold;">const</span> <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pSeq</span>,
+                              <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">length</span>,
+                              <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetStartIndex</span>,
+                              <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetLength</span>);
+
+
+ <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Find the longest palindrome from a given Fibonacci sequence.</span>
+<span style="color: #f0dfaf; font-weight: bold;">static</span> <span style="color: #7cb8bb;">void</span> <span style="color: #8cd0d3;">FindPalindrome</span>(<span style="color: #f0dfaf; font-weight: bold;">const</span> <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span>,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span>,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *
+                           );
+
+
+ <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Expand from a center to find the longest palindrome.</span>
+<span style="color: #f0dfaf; font-weight: bold;">static</span> <span style="color: #7cb8bb;">void</span> <span style="color: #8cd0d3;">ExpandFromCenter</span>(<span style="color: #f0dfaf; font-weight: bold;">const</span> <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *);
+
+<span style="color: #94bff3;">#endif</span> <span style="color: #7f9f7f;">/* </span><span style="color: #7f9f7f;">End of _FIBONACCI_PALINDROME */</span>
+
+
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">file: FibonacciPalindrome.cpp</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">The Fibonacci palindrome problem</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">--------------------------------</span>
+<span style="color: #7f9f7f;">//</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Author: Wu Jiang &lt;wujiang27 at gmail.com&gt;</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Date: 03/04/2012</span>
+<span style="color: #7f9f7f;">//</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">PROBLEM DESCRIPTION</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">-------------------</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">A contiguous sequence of unsigned integers is considered a</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">"Fibonacci palindrome" if two conditions hold:</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">1. the sequence is the same whether read backward or forward.</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">2. either the sequence has fewer than three elements, or</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">every contiguous three-element sequence {a, b, c} in it</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">satisfies at least one of these conditions:</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">$a == c, a + b == c, or a == b + c.$</span>
+<span style="color: #7f9f7f;">//</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Write a C/C++ function that takes as input a non-empty sequence of</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">unsigned integers and efficiently finds the longest Fibonacci</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">palindrome in that sequence.  If there are multiple Fibonacci</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">palindromes of the largest length, finding any one of them is</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">sufficient.  Please use the following prototype:</span>
+
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">SOLUTION DESCRIPTION</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">--------------------</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Scan from the beginning for the sequence to the end to find out all</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">possible Fibonacci sequence. For each found Fibonacci sequence,</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">compare the known longest palindrome so far with the size of the</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">current Fibonacci. If the size of the current Fibonacci is bigger</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">than the known longest Fibonacci palindrome, then find the longest</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">palindrome from the current Fibonacci. Any parts of a Fibonacci</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">sequence are also Fibonacci sequences. Scanning the sequence costs</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">$O(n)$ time.</span>
+<span style="color: #7f9f7f;">//</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">To find the longest palindrome from a sequence, we use a central</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">expanding method. Scanning from the beginning to the end of the</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">sequence, for each item, expand to its right and left hand at the</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">same pace. For example:</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">$1 1 [2] 1 1$ --&gt; expand from position 2 to position 1 and 3, then</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">to the position 0 and 4.</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">$1 1 [2 2] 1 1$ --&gt; expand from position 2 3 to position 1 and 4,</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">then to the position 0 and 5</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">This will take $O(m*m)$ time, where m is the length of the given</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">sub-sequence.</span>
+<span style="color: #7f9f7f;">//</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">So the total time cost is $O(n*m^2)$. The worst case is $O(n^3)$ in</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">theory. In practice, it should work faster.</span>
+
+
+<span style="color: #94bff3;">#include</span> <span style="color: #cc9393;">&lt;assert.h&gt;</span>
+<span style="color: #94bff3;">#include</span> <span style="color: #cc9393;">"FibonacciPalindrome.hpp"</span>
+
+
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">FindFibonacciPalindrome: unsigned int *pSeq, unsigned int length,</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">unsigned int *pRetStartIndex, unsigned int *pRetLength --&gt; void</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">-----------------------------------------------------------------</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">*pSeq: the given sequence of unsigned intergers</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">length: the sequence length</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">*pRetStartIndex: where the maximum Fibonacci palindrome starts</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">*pRetLength: the length of the maximum Fibonacci palindrome</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Find the longest Fibonacci palindrome within the given sequence of</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">unsigned integers.x</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">PRE: pSeq is not NULL</span>
+<span style="color: #7f9f7f;">//      </span><span style="color: #7f9f7f;">pRetStartIndex and pRetLength should be allocated</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">POS: *pRetStartIndex, *pRetLength may be changed</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Fibonacci palindrome example:</span>
+<span style="color: #7cb8bb;">void</span> <span style="color: #8cd0d3;">FindFibonacciPalindrome</span>(<span style="color: #f0dfaf; font-weight: bold;">const</span> <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pSeq</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">length</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetStartIndex</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetLength</span>) {
+    assert(pSeq != <span style="color: #bfebbf;">NULL</span>);
+    assert(pRetStartIndex != <span style="color: #bfebbf;">NULL</span>);
+    assert(pRetLength != <span style="color: #bfebbf;">NULL</span>);
+    assert(length &gt; 0);
+
+    *pRetStartIndex = 0;
+    *pRetLength = 1;
+    <span style="color: #f0dfaf; font-weight: bold;">if</span> (2 &gt;= length) {
+        *pRetLength = length;
+        <span style="color: #f0dfaf; font-weight: bold;">return</span>;
+    } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+        <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">fibonacciStart</span> =0, <span style="color: #dfaf8f;">fibonacciEnd</span> = 0;
+        <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">To indicate if it is a Fibonacci sequence so far</span>
+        <span style="color: #7cb8bb;">bool</span> <span style="color: #dfaf8f;">inFibonacci</span> = <span style="color: #bfebbf;">false</span>;
+        <span style="color: #f0dfaf; font-weight: bold;">for</span> (<span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">idx</span> = 1; idx &lt; length - 1; ++idx) {
+            <span style="color: #f0dfaf; font-weight: bold;">if</span> ((pSeq[idx - 1] != pSeq[idx + 1]) &amp;&amp;
+                (pSeq[idx - 1] + pSeq[idx] != pSeq[idx + 1]) &amp;&amp;
+                (pSeq[idx - 1] != pSeq[idx] + pSeq[idx + 1])) {
+                <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">When Fibonacci checking return false</span>
+                <span style="color: #f0dfaf; font-weight: bold;">if</span> (inFibonacci) {
+                    fibonacciEnd = idx;
+                    <span style="color: #f0dfaf; font-weight: bold;">if</span> (fibonacciEnd - fibonacciStart &gt; *pRetLength) {
+                        FindPalindrome(pSeq, fibonacciStart, fibonacciEnd,
+                                       pRetStartIndex, pRetLength);
+                    } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+                        ;
+                    }
+                } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+                    ;
+                }
+                inFibonacci = <span style="color: #bfebbf;">false</span>;
+            } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+                <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">When Fibonacci checking return true</span>
+                <span style="color: #f0dfaf; font-weight: bold;">if</span> (<span style="color: #dcdccc;">!</span>inFibonacci) {
+                    fibonacciStart = idx - 1;
+                } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+                    ;
+                }
+                <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">When it reaches the end of the sequence and it is</span>
+                <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">still a palindrome</span>
+                <span style="color: #f0dfaf; font-weight: bold;">if</span> (length - 2 == idx) {
+                    fibonacciEnd = idx + 1;
+                    <span style="color: #f0dfaf; font-weight: bold;">if</span> (fibonacciEnd - fibonacciStart &gt; *pRetLength) {
+                        FindPalindrome(pSeq, fibonacciStart, fibonacciEnd,
+                                       pRetStartIndex, pRetLength);
+                    } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+                        ;
+                    }
+                } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+                    ;
+                }
+                inFibonacci = <span style="color: #bfebbf;">true</span>;
+            }
+        }
+    }
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">If *pRetLength &lt; 3, then scan from the beginning to the end of</span>
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">the sequence by a group of two items to check if there are any</span>
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Fibonacci palindrome with length of 2. i.e. 2 1 1 --&gt; 1 1</span>
+    <span style="color: #f0dfaf; font-weight: bold;">if</span> (3 &gt; *pRetLength) {
+        <span style="color: #f0dfaf; font-weight: bold;">for</span> (<span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">idx</span> = 0; idx &lt; length - 1; ++idx) {
+            FindPalindrome(pSeq, idx, idx + 1, pRetStartIndex, pRetLength);
+        }
+    } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+        ;
+    }
+    <span style="color: #f0dfaf; font-weight: bold;">return</span>;
+}
+
+
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">AUX FUNCTIONS DEFINITION</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">------------------------</span>
+<span style="color: #7f9f7f;">//</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">FindPalindrome: unsigned int *pSeq, unsigned int fibonacciStart,</span>
+<span style="color: #7f9f7f;">//                 </span><span style="color: #7f9f7f;">unsigned int fibonacciEnd, unsigned int *</span>
+<span style="color: #7f9f7f;">//                 </span><span style="color: #7f9f7f;">pRetStartIndex, unsigned int pRetLength --&gt; void</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">-----------------------------------------------------------------</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">pSeq: a sequence of unsigned integers</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">fibonacciStart: where a Fibonacci sequence within pSeq starts</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">fibonacciEnd: where a Fibonacci sequence within pSeq ends</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">pRetStartIndex: where a Fibonacci Palindrome within pSeq starts</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">pRetLength: the length of the Fibonacci Palindrome within pSeq</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Given a part of a sequence of unsigned integers which is a</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Fibonacci sequence, find the longest palindrome within that</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Fibonacci sequence.</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">A Fibonacci sequence is a sequence satisfy the following</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">conditions.</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">1. the sequence is the same whether read backward or forward.</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">2. either the sequence has fewer than three elements, or</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">every contiguous three-element sequence {a, b, c} in it</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">satisfies at least one of these conditions: a==c, a+b==c, or a==b+c.</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">PRE: fibonacciEnd &gt; fibonacciStart</span>
+<span style="color: #7f9f7f;">//      </span><span style="color: #7f9f7f;">pSeq is not NULL</span>
+<span style="color: #7f9f7f;">//      </span><span style="color: #7f9f7f;">pRetStartIndex and pRetLength should be allocated</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">POS: *pRetStartIndex, *pRetLength may be changed</span>
+<span style="color: #f0dfaf; font-weight: bold;">static</span> <span style="color: #7cb8bb;">void</span> <span style="color: #8cd0d3;">FindPalindrome</span>(<span style="color: #f0dfaf; font-weight: bold;">const</span> <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pSeq</span>,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">fibonacciStart</span>,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">fibonacciEnd</span>,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetStartIndex</span>,
+                           <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetLength</span>) {
+    assert(fibonacciEnd &gt; fibonacciStart);
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Special cases with length 1 and 2</span>
+    <span style="color: #f0dfaf; font-weight: bold;">if</span> (fibonacciStart == fibonacciEnd ||
+        ((fibonacciEnd - fibonacciStart == 1) &amp;&amp;
+         pSeq[fibonacciStart] == pSeq[fibonacciEnd])) {
+        *pRetStartIndex = fibonacciStart;
+        *pRetLength = fibonacciEnd - fibonacciStart + 1;
+        <span style="color: #f0dfaf; font-weight: bold;">return</span>;
+    } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+        <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">maxLength</span> = 1;
+        <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">maxStartIndex</span> = fibonacciStart;
+        <span style="color: #f0dfaf; font-weight: bold;">for</span> (<span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">idx</span> = fibonacciStart + 1; idx &lt; fibonacciEnd; ++idx) {
+            <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Odd palindrome</span>
+            <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">sc: step counter</span>
+            ExpandFromCenter(pSeq, fibonacciStart, fibonacciEnd, idx, idx,
+                             pRetStartIndex, pRetLength);
+            <span style="color: #f0dfaf; font-weight: bold;">if</span> (pSeq[idx] == pSeq[idx + 1]) {
+                ExpandFromCenter(pSeq, fibonacciStart, fibonacciEnd,
+                                 idx, idx + 1, pRetStartIndex, pRetLength);
+            } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+                ;
+            }
+        }
+        <span style="color: #f0dfaf; font-weight: bold;">return</span>;
+    }
+}
+
+
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">ExpandFromCenter: unsigned int *pSeq, unsigned int fibonacciStart,</span>
+<span style="color: #7f9f7f;">//                   </span><span style="color: #7f9f7f;">unsigned int fibonacciEnd, unsigned int lhand,</span>
+<span style="color: #7f9f7f;">//                   </span><span style="color: #7f9f7f;">unsigned int rhand, unsigned int *pRetStartIndex,</span>
+<span style="color: #7f9f7f;">//                   </span><span style="color: #7f9f7f;">unsigned int *pRetLength --&gt; void</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">-------------------------------------------------------------------</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">pSeq: a sequence of unsigned integers</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">fibonacciStart: where a Fibonacci sequence within pSeq starts</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">fibonacciEnd: where a Fibonacci sequence within pSeq ends</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">lhand: left hand where expanding starts</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">rhand: right hand where expanding ends</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">pRetStartIndex: where a Fibonacci Palindrome within pSeq starts</span>
+<span style="color: #7f9f7f;">//   </span><span style="color: #7f9f7f;">pRetLength: the length of the Fibonacci Palindrome within pSeq</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Given the left hand and right hand of a center, expand from the two</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">sides to find out the longest palindrome.</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">PRE: fibonacciEnd &gt; fibonacciStart</span>
+<span style="color: #7f9f7f;">//      </span><span style="color: #7f9f7f;">rhand &gt;= lhand</span>
+<span style="color: #7f9f7f;">//      </span><span style="color: #7f9f7f;">pSeq is not NULL</span>
+<span style="color: #7f9f7f;">//      </span><span style="color: #7f9f7f;">pRetStartIndex and pRetLength should be allocated</span>
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">POS: *pRetStartIndex, *pRetLength may be changed</span>
+<span style="color: #f0dfaf; font-weight: bold;">static</span> <span style="color: #7cb8bb;">void</span> <span style="color: #8cd0d3;">ExpandFromCenter</span>(<span style="color: #f0dfaf; font-weight: bold;">const</span> <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pSeq</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">fibonacciStart</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">fibonacciEnd</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">lhand</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">rhand</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetStartIndex</span>,
+                             <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> *<span style="color: #dfaf8f;">pRetLength</span>) {
+    assert(fibonacciEnd &gt; fibonacciStart);
+    assert(rhand &gt;= lhand);
+    assert(pSeq != <span style="color: #bfebbf;">NULL</span>);
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Step counter</span>
+    <span style="color: #7cb8bb;">unsigned</span> <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">sc</span> = 1;
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Deal with negative integers</span>
+    <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">lidx</span> = lhand - sc;
+    <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">lbound</span> = fibonacciStart;
+    <span style="color: #f0dfaf; font-weight: bold;">for</span> ( ; lidx &gt;= lbound &amp;&amp;
+              rhand + sc &lt;= fibonacciEnd &amp;&amp;
+              pSeq[lhand - sc] == pSeq[rhand + sc];
+          ++sc, lidx = lhand - sc);
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">Need to step back 1 position because sc has the steps which</span>
+    <span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">makes the palindrome checking fail</span>
+    --sc;
+    <span style="color: #7cb8bb;">int</span> <span style="color: #dfaf8f;">curLength</span> = sc * 2 + (rhand - lhand + 1);
+    <span style="color: #f0dfaf; font-weight: bold;">if</span> (*pRetLength &lt; curLength) {
+        *pRetStartIndex = lhand - sc;
+        *pRetLength = curLength;
+    } <span style="color: #f0dfaf; font-weight: bold;">else</span> {
+        ;
+    }
+    <span style="color: #f0dfaf; font-weight: bold;">return</span>;
+}
+
+
+<span style="color: #7f9f7f;">// </span><span style="color: #7f9f7f;">EOF</span>
+</pre>
+
+</div>
+</div>
+
+  </div>
+  
+  <footer class="well article-footer">
+    Posted on <time datetime="2012-12-15T02:37:00Z"> Saturday December, 15 2012 at 02:37:00</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> related tags</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/algorithms.html">algorithms</a></li><li class="label label-inverse small"><a href="../../../tags/fibonacci.html">fibonacci</a></li><li class="label label-inverse small"><a href="../../../tags/palindrome.html">palindrome</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'morediff'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>About</h1>
+	      <p>
+ <a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>Links</h1>
+	      <ul>
+		<ul>
+<li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
+</li>
+</ul>
+
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1><a href="../../../archives.html">Archives</a></h1>
+	      <ul>
+		<li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1><a href="../../../tags/index.html">Tags</a></h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/algorithms.html">algorithms</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fibonacci.html">fibonacci</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/palindrome.html">palindrome</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/setup.html">setup</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  
+
+	  <p>Powered by <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	</div>
+      </div>
+</body>
+</html>
+

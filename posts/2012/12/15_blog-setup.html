@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Blog Setup</title>
+    <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="o-blog version 1.2-120-g06a5a11"/>
+    <script src="../../../style/js/less-1.3.0.min.js" type="text/javascript"></script>
+    <script src="../../../style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-transition.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+    <script src="../../../style/bootstrap/js/bootstrap-collapse.js" type="text/javascript"></script>
+    <script src="../../../style/js/prettify.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog.linenumber.js" type="text/javascript"></script>
+    <script src="../../../style/js/o-blog-fix.js" type="text/javascript"></script>
+    
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+	<div class="container">
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+	  <a class="brand" href="../../../index.html">More is Different</a>
+	  <div class="nav-collapse collapse">
+	    <ul>
+<li><a href="../../../index.html"><i>icon-home icon-white</i> Home</a>
+
+</li>
+<li><a href="#"><i>icon-file icon-white</i> Posts</a>
+<ul>
+<li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a>
+</li>
+<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a>
+</li>
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a>
+</li>
+<li><a href="../../../posts/2012/12/15_blog-setup.html">Blog Setup</a>
+</li>
+<li><a href="Lisp error in nil: (error ob:post-htmlfile accessing a non-ob:post)">Lisp error in nil: (error ob:post-title accessing a non-ob:post)</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
+</li>
+</ul>
+
+
+
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="subnav subnav-fixed visible-desktop">
+      <div class="container">
+	<ul class="breadcrumb">
+  <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
+  <li><a href="../../../posts/index.html">Posts</a> <span class="divider">/</span></li><li><a href="../../../posts/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../posts/2012/12/index.html">12</a> <span class="divider">/</span></li><li>Blog Setup</li>
+  </ul>
+
+      </div>
+    </div>
+    <div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">15</div>
+	  <div class=" date-m"><a href="../../../posts/2012/12/index.html">Dec</a></div>
+	  <div class=" date-y"><a href="../../../posts/2012/index.html">2012</a>
+	  </div>
+	</div>
+	<div class="span1">
+	  <div class="qr-code">
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3A%2F%2Fmorediff.info%2Fposts%2F2012%2F12%2F15_blog-setup.html"
+       alt="qr-code" />
+</div>
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">Blog Setup</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous">&nbsp;</li><li class="next" style="text-align: right;"><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt&nbsp;<i class="icon-chevron-right"></i></a></li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <p>
+This blog is powered by <a href="https://github.com/renard/o-blog">o-blog</a>, which converts <a href="http://orgmode.org">Org</a> files into
+static html pages. As an <a href="http://www.gnu.org/software/emacs/">Emacs</a> + <a href="http://orgmode.org">Org</a> user, <a href="https://github.com/renard/o-blog">o-blog</a> is the best blog
+tool so far to myself. It allows me to use the all the features from
+<a href="http://orgmode.org">Org</a>, at the same time provides a lot of cool <a href="http://renard.github.com/o-blog/features.html">features</a>.
+</p>
+<p>
+Setting up the basic page is relatively straight forward. Let's starts
+from our "Hello World!" example.
+</p>
+
+
+
+<pre class="src src-org"><span class="linenr"> 1:  </span><span style="color: #b2b2b2;">#+TITLE:</span> <span style="color: #afffff; font-weight: bold;">Hello World Blog</span>
+<span class="linenr"> 2:  </span><span style="color: #7f9f7f;">#+DESCRIPTION: How to create a basic blog using o-blog</span>
+<span class="linenr"> 3:  </span>
+<span class="linenr"> 4:  </span><span style="color: #7f9f7f;">#+STARTUP: logdone</span>
+<span class="linenr"> 5:  </span>
+<span class="linenr"> 6:  </span><span style="color: #7f9f7f;">#+TEMPLATE_DIR: templates</span>
+<span class="linenr"> 7:  </span><span style="color: #7f9f7f;">#+URL: http://helloworld.blog</span>
+<span class="linenr"> 8:  </span>
+<span class="linenr"> 9:  </span><span style="color: #7f9f7f;">#+DISQUS: hello-world-demo</span>
+<span class="linenr">10:  </span><span style="color: #7f9f7f;">#+FILENAME_SANITIZER: ob-sanitize-string</span>
+<span class="linenr">11:  </span><span style="color: #7f9f7f;">#+POST_SORTER: ob-sort-posts-by-date</span>
+<span class="linenr">12:  </span>
+<span class="linenr">13:  </span><span style="color: #dfaf8f; background-color: #3f3f3f;">* Home Page</span>
+<span class="linenr">14:  </span>,  :PROPERTIES:
+<span class="linenr">15:  </span>,  :PAGE: index.html
+<span class="linenr">16:  </span>,  :TEMPLATE: blog_static_no_title.html
+<span class="linenr">17:  </span>,  :END:
+<span class="linenr">18:  </span>
+<span class="linenr">19:  </span><span style="color: #7f9f7f;">#+begin_o_blog_row 8</span>
+<span class="linenr">20:  </span>
+<span class="linenr">21:  </span>#+begin_o_blog_hero_unit
+<span class="linenr">22:  </span>#+HTML: &lt;h1&gt;&lt;lisp&gt;(ob:blog-title BLOG)&lt;/lisp&gt;&lt;/h1&gt;
+<span class="linenr">23:  </span><span style="color: #7f9f7f;">#+end_o_blog_hero_unit</span>
+<span class="linenr">24:  </span>
+<span class="linenr">25:  </span><span style="color: #7f9f7f;">#+o_blog_row_column 4</span>
+<span class="linenr">26:  </span>
+<span class="linenr">27:  </span><span style="color: #7f9f7f;">#+HTML:</span> <span style="color: #b2b2b2;">&lt;div class="hero-unit" style="font-size: 100%;"&gt;</span>
+<span class="linenr">28:  </span>
+<span class="linenr">29:  </span>,<span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;">/icon-github-sign icon-white/ github</span>
+<span class="linenr">30:  </span>
+<span class="linenr">31:  </span><span style="color: #7f9f7f;">#+HTML:</span> <span style="color: #b2b2b2;">&lt;/div&gt;</span>
+<span class="linenr">32:  </span>
+<span class="linenr">33:  </span><span style="color: #7f9f7f;">#+end_o_blog_row</span>
+<span class="linenr">34:  </span>
+<span class="linenr">35:  </span><span style="color: #7f9f7f;">#+begin_o_blog_row 5</span>
+<span class="linenr">36:  </span><span style="color: #8fb28f; background-color: #3f3f3f;">** Hello World</span>
+<span class="linenr">37:  </span>,    Welcome to our <span style="color: #b2b2b2;">=Hello World=</span> demo site.
+<span class="linenr">38:  </span>
+<span class="linenr">39:  </span><span style="color: #7f9f7f;">#+end_o_blog_row</span>
+<span class="linenr">40:  </span>
+<span class="linenr">41:  </span><span style="color: #dfaf8f; background-color: #3f3f3f;">* Blog Details</span>
+<span class="linenr">42:  </span><span style="color: #8fb28f; background-color: #3f3f3f;">** Copyright</span>
+<span class="linenr">43:  </span>,   :PROPERTIES:
+<span class="linenr">44:  </span>,   :SNIPPET: t
+<span class="linenr">45:  </span>,   :END:
+<span class="linenr">46:  </span>
+<span class="linenr">47:  </span><span style="color: #8fb28f; background-color: #3f3f3f;">** About</span>
+<span class="linenr">48:  </span>,  :PROPERTIES:
+<span class="linenr">49:  </span>,  :SNIPPET: t
+<span class="linenr">50:  </span>,  :END:
+<span class="linenr">51:  </span>
+<span class="linenr">52:  </span>,   <span style="color: #b2b2b2;">=Hello World=</span> demo site using o-blog
+<span class="linenr">53:  </span> 
+<span class="linenr">54:  </span><span style="color: #8fb28f; background-color: #3f3f3f;">** Navigation</span>
+<span class="linenr">55:  </span>,  :PROPERTIES:
+<span class="linenr">56:  </span>,  :SNIPPET: t
+<span class="linenr">57:  </span>,  :END:
+<span class="linenr">58:  </span>
+<span class="linenr">59:  </span><span style="color: #8fb28f; background-color: #3f3f3f;">** Navigation Footer</span>
+<span class="linenr">60:  </span>,  :PROPERTIES:
+<span class="linenr">61:  </span>,  :SNIPPET:t
+<span class="linenr">62:  </span>,  :END:
+<span class="linenr">63:  </span>
+<span class="linenr">64:  </span><span style="color: #8fb28f; background-color: #3f3f3f;">** Articles by tags</span>
+<span class="linenr">65:  </span>,  :PROPERTIES:
+<span class="linenr">66:  </span>,  :PAGE: tags.html
+<span class="linenr">67:  </span>,  :TEMPLATE: blog_post-by-tags.html
+<span class="linenr">68:  </span>,   :END:
+<span class="linenr">69:  </span>
+<span class="linenr">70:  </span><span style="color: #dfaf8f; background-color: #3f3f3f;">* Posts</span>
+<span class="linenr">71:  </span><span style="color: #8fb28f; background-color: #3f3f3f;">** </span><span style="color: #afd8af; font-weight: bold;">DONE</span><span style="color: #8fb28f; background-color: #3f3f3f;"> Hello World                         </span><span style="color: #8fb28f; background-color: #3f3f3f; font-weight: bold;">:demo:hello_world:</span>
+<span class="linenr">72:  </span>,   <span style="color: #656555;">CLOSED:</span> <span style="color: #8cd0d3; text-decoration: underline;">[2012-12-15 Sat 15:35]</span>
+<span class="linenr">73:  </span>,   :PROPERTIES:
+<span class="linenr">74:  </span>,   :END:
+<span class="linenr">75:  </span>
+<span class="linenr">76:  </span>,   This is our <span style="color: #b2b2b2;">=Hello World=</span> example by using <span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;">o-blog</span>.
+<span class="linenr">77:  </span>,   It's required to insert an empty line between <span style="color: #b2b2b2;">=:END:=</span> and the content
+<span class="linenr">78:  </span>,   of the post. A post only get published when it's state cycle changed
+<span class="linenr">79:  </span>,   from <span style="color: #b2b2b2;">=TODO=</span> to <span style="color: #b2b2b2;">=DONE=</span>  which is a great feature which allows us to
+<span class="linenr">80:  </span>,   keep our in-progress post private until it's done.
+<span class="linenr">81:  </span>
+</pre>
+
+
+  </div>
+  
+  <footer class="well article-footer">
+    Posted on <time datetime="2012-12-15T02:03:00Z"> Saturday December, 15 2012 at 02:03:00</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> related tags</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/setup.html">setup</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'morediff'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>About</h1>
+	      <p>
+ <a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>Links</h1>
+	      <ul>
+		<ul>
+<li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
+
+</li>
+<li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
+
+</li>
+<li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
+</li>
+</ul>
+
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1><a href="../../../archives.html">Archives</a></h1>
+	      <ul>
+		<li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/15_blog-setup.html">Blog Setup</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1><a href="../../../tags/index.html">Tags</a></h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/algorithms.html">algorithms</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fibonacci.html">fibonacci</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/palindrome.html">palindrome</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/setup.html">setup</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  
+
+	  <p>Powered by <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	</div>
+      </div>
+</body>
+</html>
+

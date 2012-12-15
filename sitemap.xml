@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>http://morediff.info/</loc>
+    <lastmod>2012-12-09T20:00:19Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://morediff.info/index.html</loc>
+    <lastmod>2012-12-15T18:07:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>http://morediff.info/tags.html</loc>
+    <lastmod>2012-12-15T18:07:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+
+  <url>
+    <loc>http://morediff.info/posts/2012/12/15_formencode-1-introduction.html</loc>
+    <lastmod>2012-12-15T02:51:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://morediff.info/posts/2012/12/15_a-fibonacci-palindrome-problem.html</loc>
+    <lastmod>2012-12-15T02:37:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://morediff.info/posts/2012/12/15_score-my-mutt.html</loc>
+    <lastmod>2012-12-15T02:21:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>http://morediff.info/posts/2012/12/14_blog-setup.html</loc>
+    <lastmod>2012-12-14T16:53:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
+
