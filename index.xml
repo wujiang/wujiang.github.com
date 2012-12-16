@@ -463,15 +463,13 @@ how to configure it by understanding the following example.
 unscore *
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;addressed to myself&lt;/span&gt;
 score &lt;span style="color: #cc9393;"&gt;"~p"&lt;/span&gt; 7
-score &lt;span style="color: #cc9393;"&gt;"!(~f trac@domain\.com) ~C wjiang@domain\.com"&lt;/span&gt; 7
-score &lt;span style="color: #cc9393;"&gt;"!(~f trac@domain\.com) ~C wu@domain\.com"&lt;/span&gt; 7
-score &lt;span style="color: #cc9393;"&gt;"!(~f trac@domain\.com) ~C wu.jiang@domain\.com"&lt;/span&gt; 7
+score &lt;span style="color: #cc9393;"&gt;"!(~f trac@domain\.com) ~C name@domain\.com"&lt;/span&gt; 7
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;replied to&lt;/span&gt;
 score &lt;span style="color: #cc9393;"&gt;"~Q"&lt;/span&gt; 6
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;company group email&lt;/span&gt;
-score &lt;span style="color: #cc9393;"&gt;"~C everyone@domain\.com"&lt;/span&gt; 6
+score &lt;span style="color: #cc9393;"&gt;"~C yaname@domain\.com"&lt;/span&gt; 6
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;ticket assignment&lt;/span&gt;
-score &lt;span style="color: #cc9393;"&gt;"~f trac@domain\.com"&lt;/span&gt; 5
+score &lt;span style="color: #cc9393;"&gt;"~f yaaname@domain\.com"&lt;/span&gt; 5
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;from me&lt;/span&gt;
 score &lt;span style="color: #cc9393;"&gt;"~P"&lt;/span&gt; 4
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;mercurial push, commit&lt;/span&gt;
@@ -607,7 +605,7 @@ server, I created a cron job which will &lt;code&gt;git pull&lt;/code&gt; every 
 
 
 
-&lt;pre class="src src-sh"&gt;deploy work flow
+&lt;pre class="src src-sh"&gt;deploy workflow
 
   +--------------+                +--------------+                 +--------------+
   |              |                |              |   (cron job)    |              |
