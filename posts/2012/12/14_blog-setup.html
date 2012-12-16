@@ -216,12 +216,14 @@ server, I created a cron job which will <code>git pull</code> every minute.
 
 <pre class="src src-sh">deploy workflow
 
-  +--------------+                +--------------+                 +--------------+
-  |              |                |              |   (cron job)    |              |
-  |  Laptop      |   git push     |   Github     |    git pull     |  EC2 Server  |
-  |              | -------------&gt; |              | --------------&gt; |              |
-  |              |                |              |                 |              |
-  +--------------+                +--------------+                 +--------------+
+  +--------------+           +------------------+           +--------------+
+  |              |           |                  |           |              |
+  |              |           |                  | (crontab) |              |
+  |    Laptop    | git push  |     Github       | git pull  | EC2 Server   |
+  |              |---------&gt; |wujiang.github.com|---------&gt; |morediff.info |
+  |              |           |                  |           |              |
+  |              |           |                  |           |              |
+  +--------------+           +------------------+           +--------------+
 
 </pre>
 

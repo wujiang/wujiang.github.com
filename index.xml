@@ -607,12 +607,14 @@ server, I created a cron job which will &lt;code&gt;git pull&lt;/code&gt; every 
 
 &lt;pre class="src src-sh"&gt;deploy workflow
 
-  +--------------+                +--------------+                 +--------------+
-  |              |                |              |   (cron job)    |              |
-  |  Laptop      |   git push     |   Github     |    git pull     |  EC2 Server  |
-  |              | -------------&amp;gt; |              | --------------&amp;gt; |              |
-  |              |                |              |                 |              |
-  +--------------+                +--------------+                 +--------------+
+  +--------------+           +------------------+           +--------------+
+  |              |           |                  |           |              |
+  |              |           |                  | (crontab) |              |
+  |    Laptop    | git push  |     Github       | git pull  | EC2 Server   |
+  |              |---------&amp;gt; |wujiang.github.com|---------&amp;gt; |morediff.info |
+  |              |           |                  |           |              |
+  |              |           |                  |           |              |
+  +--------------+           +------------------+           +--------------+
 
 &lt;/pre&gt;
 
