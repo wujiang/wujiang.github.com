@@ -209,8 +209,7 @@ use <code>EC2</code> as my host. What I did at the beginning was setting up a
 <code>Mercurial</code> repository on my server. Every time I generate new htmls,
 I push to my server. Since I also want to host a mirror site via
 <a href="http://pages.github.com/">Github Page</a>, I switched to use <a href="https://github.com/wujiang/wujiang.github.com">Github</a> as my repository. On my <code>EC2</code>
-server, I created a cron job which will <code>git pull</code> and <code>git update</code>
-every minute.
+server, I created a cron job which will <code>git pull</code> every minute.
 </p>
 
 
@@ -219,7 +218,7 @@ every minute.
 
   +--------------+                +--------------+                 +--------------+
   |              |                |              |   (cron job)    |              |
-  |  Laptop      |   git push     |   Github     | git pull/update |  EC2 Server  |
+  |  Laptop      |   git push     |   Github     |    git pull     |  EC2 Server  |
   |              | -------------&gt; |              | --------------&gt; |              |
   |              |                |              |                 |              |
   +--------------+                +--------------+                 +--------------+
