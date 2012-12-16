@@ -179,9 +179,9 @@ from our "Hello World!" example.
 ,  :END:
 
 <span style="color: #8fb28f; background-color: #3f3f3f;">** Articles by tags</span>
-,  :PROPERTIES:
-,  :PAGE: tags.html
-,  :TEMPLATE: blog_post-by-tags.html
+,   :PROPERTIES:
+,   :PAGE: tags.html
+,   :TEMPLATE: blog_post-by-tags.html
 ,   :END:
 
 <span style="color: #dfaf8f; background-color: #3f3f3f;">* Posts</span>
@@ -205,10 +205,28 @@ static htmls. All outputs will be in <code>out</code> directory. You can just co
 this directory to wherever you host your website, i.e. <code>S3</code>, <code>EC2</code>, or
 <code>Github Pages</code>. For <code>S3</code>, you can use a great set of tools from
 <code>s3cmd</code>, including <code>s3cmd put</code>, <code>s3cmd sync</code>, or <code>s3cmd setacl</code>. I
-use <code>EC2</code> as my host. All I did was setting up a <code>Mercurial</code> repository
-on my server. Every time I generate new htmls, I push to my
-server.
+use <code>EC2</code> as my host. What I did at the beginning was setting up a
+<code>Mercurial</code> repository on my server. Every time I generate new htmls,
+I push to my server. Since I also want to host a mirror site via
+<a href="http://pages.github.com/">Github Page</a>, I switched to use <a href="https://github.com/wujiang/wujiang.github.com">Github</a> as my repository. On my <code>EC2</code>
+server, I created a cron job which will <code>git pull</code> and <code>git update</code>
+every minute.
 </p>
+
+
+
+<pre class="src src-sh">deploy work flow
+
+  +--------------+                +--------------+                 +--------------+
+  |              |                |              |   (cron job)    |              |
+  |  Laptop      |   git push     |   Github     | git pull/update |  EC2 Server  |
+  |              | -------------&gt; |              | --------------&gt; |              |
+  |              |                |              |                 |              |
+  +--------------+                +--------------+                 +--------------+
+
+</pre>
+
+
   </div>
   
   <footer class="well article-footer">

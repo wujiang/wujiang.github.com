@@ -572,9 +572,9 @@ from our "Hello World!" example.
 ,  :END:
 
 &lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Articles by tags&lt;/span&gt;
-,  :PROPERTIES:
-,  :PAGE: tags.html
-,  :TEMPLATE: blog_post-by-tags.html
+,   :PROPERTIES:
+,   :PAGE: tags.html
+,   :TEMPLATE: blog_post-by-tags.html
 ,   :END:
 
 &lt;span style="color: #dfaf8f; background-color: #3f3f3f;"&gt;* Posts&lt;/span&gt;
@@ -598,8 +598,26 @@ static htmls. All outputs will be in &lt;code&gt;out&lt;/code&gt; directory. You
 this directory to wherever you host your website, i.e. &lt;code&gt;S3&lt;/code&gt;, &lt;code&gt;EC2&lt;/code&gt;, or
 &lt;code&gt;Github Pages&lt;/code&gt;. For &lt;code&gt;S3&lt;/code&gt;, you can use a great set of tools from
 &lt;code&gt;s3cmd&lt;/code&gt;, including &lt;code&gt;s3cmd put&lt;/code&gt;, &lt;code&gt;s3cmd sync&lt;/code&gt;, or &lt;code&gt;s3cmd setacl&lt;/code&gt;. I
-use &lt;code&gt;EC2&lt;/code&gt; as my host. All I did was setting up a &lt;code&gt;Mercurial&lt;/code&gt; repository
-on my server. Every time I generate new htmls, I push to my
-server.
-&lt;/p&gt;</content></entry>
+use &lt;code&gt;EC2&lt;/code&gt; as my host. What I did at the beginning was setting up a
+&lt;code&gt;Mercurial&lt;/code&gt; repository on my server. Every time I generate new htmls,
+I push to my server. Since I also want to host a mirror site via
+&lt;a href="http://pages.github.com/"&gt;Github Page&lt;/a&gt;, I switched to use &lt;a href="https://github.com/wujiang/wujiang.github.com"&gt;Github&lt;/a&gt; as my repository. On my &lt;code&gt;EC2&lt;/code&gt;
+server, I created a cron job which will &lt;code&gt;git pull&lt;/code&gt; and &lt;code&gt;git update&lt;/code&gt;
+every minute.
+&lt;/p&gt;
+
+
+
+&lt;pre class="src src-sh"&gt;deploy work flow
+
+  +--------------+                +--------------+                 +--------------+
+  |              |                |              |   (cron job)    |              |
+  |  Laptop      |   git push     |   Github     | git pull/update |  EC2 Server  |
+  |              | -------------&amp;gt; |              | --------------&amp;gt; |              |
+  |              |                |              |                 |              |
+  +--------------+                +--------------+                 +--------------+
+
+&lt;/pre&gt;
+
+</content></entry>
 </feed>
