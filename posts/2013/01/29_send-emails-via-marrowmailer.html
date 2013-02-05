@@ -35,15 +35,15 @@
 </li>
 <li><a href="#"><i>icon-file icon-white</i> Posts</a>
 <ul>
+<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a>
+</li>
 <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a>
 </li>
 <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a>
 </li>
 <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a>
 </li>
-<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a>
-</li>
-<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Blog Setup</a>
+<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">Score My Mutt</a>
 
 </li>
 </ul>
@@ -97,7 +97,7 @@
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../posts/2012/12/15_formencode-1-introduction.html"><i class="icon-chevron-left"></i>&nbsp;FormEncode: (1) Introduction</a></li><li class="next">&nbsp;</li>
+	  <li class="previous"><a href="../../../posts/2012/12/15_formencode-1-introduction.html"><i class="icon-chevron-left"></i>&nbsp;FormEncode: (1) Introduction</a></li><li class="next" style="text-align: right;"><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation&nbsp;<i class="icon-chevron-right"></i></a></li>
 	</ul>
       </nav>
     </div>
@@ -105,6 +105,13 @@
   </header>
   <div class="article-content">
     <p>
+I have a web app where authorized users can log in to edit a
+schedule. In order to remind the users mentioned in the schedule on a
+weekly base, a mailer running inside of cron is
+needed. <a href="https://github.com/marrow/marrow.mailer">marrow.mailer</a> is
+a very handy framework to help achieve this goal.
+</p>
+<p>
 First, I retrieve all the calendar for this week from the database:
 </p>
 
@@ -201,13 +208,13 @@ mailer.stop()
 	    <nav id="archives" class="span3">
 	      <h1><a href="../../../archives.html">Archives</a></h1>
 	      <ul>
-		<li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
+		<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a></li> <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
 	      <h1><a href="../../../tags/index.html">Tags</a></h1>
 	      <ul>
-  <li style="font-size: 80.00%;"><a href="../../../tags/algorithms.html">algorithms</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fibonacci.html">fibonacci</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/palindrome.html">palindrome</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/setup.html">setup</a></li>
+  <li style="font-size: 80.00%;"><a href="../../../tags/algorithms.html">algorithms</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fibonacci.html">fibonacci</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/palindrome.html">palindrome</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/setup.html">setup</a></li>
 </ul>
 
 	    </nav>

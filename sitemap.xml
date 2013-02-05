@@ -9,14 +9,14 @@
 
   <url>
     <loc>http://morediff.info/index.html</loc>
-    <lastmod>2013-02-05T10:00:00Z</lastmod>
+    <lastmod>2013-02-05T14:35:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
     <loc>http://morediff.info/tags.html</loc>
-    <lastmod>2013-02-05T10:00:00Z</lastmod>
+    <lastmod>2013-02-05T14:35:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -24,6 +24,12 @@
 
 
   <url>
+    <loc>http://morediff.info/posts/2013/02/05_formencode-2-compound-validation.html</loc>
+    <lastmod>2013-02-05T14:15:00Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
     <loc>http://morediff.info/posts/2013/01/29_send-emails-via-marrowmailer.html</loc>
     <lastmod>2013-01-29T21:58:00Z</lastmod>
     <changefreq>weekly</changefreq>
