@@ -5,7 +5,47 @@
   <link href="http://morediff.info"/>
   <updated>2012-12-09T20:00:19Z</updated>
   <id>http://morediff.infoindex.xml</id>
-  <entry><title type="html">FormEncode: (1) Introduction</title><author><name>nil</name></author><link href="http://morediff.info/posts/2012/12/15_formencode-1-introduction.html"/><updated>2012-12-15T02:51:00Z</updated><published>2012-12-15T02:51:00Z</published><id>posts/2012/12/15_formencode-1-introduction.html</id><category scheme="/tags/formencode.html" term="formencode" label="formencode"/><category scheme="/tags/python.html" term="python" label="python"/><content type="html">&lt;p&gt;
+  <entry><title type="html">Send emails via marrow.mailer</title><author><name>nil</name></author><link href="http://morediff.info/posts/2013/01/29_send-emails-via-marrowmailer.html"/><updated>2013-01-29T21:58:00Z</updated><published>2013-01-29T21:58:00Z</published><id>posts/2013/01/29_send-emails-via-marrowmailer.html</id><category scheme="/tags/python.html" term="python" label="python"/><category scheme="/tags/email.html" term="email" label="email"/><category scheme="/tags/mailer.html" term="mailer" label="mailer"/><category scheme="/tags/postfix.html" term="postfix" label="postfix"/><content type="html">&lt;p&gt;
+First, I retrieve all the calendar for this week from the database:
+&lt;/p&gt;
+
+
+&lt;pre class="src src-python"&gt;&lt;span style="color: #dfaf8f;"&gt;now&lt;/span&gt; = datetime.now()
+&lt;span style="color: #dfaf8f;"&gt;nextweek&lt;/span&gt; = now + timedelta(days=7)
+&lt;span style="color: #dfaf8f;"&gt;cal&lt;/span&gt; = (
+    session.query(model.Calendar)
+        .&lt;span style="color: #93e0e3;"&gt;filter&lt;/span&gt;(between(model.Calendar.fake_date, now, nextweek))
+).first()
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+Then, setup the mailer via marrow.mailer
+&lt;/p&gt;
+
+
+&lt;pre class="src src-python"&gt;&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;start the mailer daemon. I use postfix as my email agent so here I use&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;localhost as host&lt;/span&gt;
+&lt;span style="color: #dfaf8f;"&gt;mailer&lt;/span&gt; = Mailer(&lt;span style="color: #93e0e3;"&gt;dict&lt;/span&gt;(
+    transport = &lt;span style="color: #93e0e3;"&gt;dict&lt;/span&gt;(
+        use = &lt;span style="color: #cc9393;"&gt;"smtp"&lt;/span&gt;,
+        host = &lt;span style="color: #cc9393;"&gt;"localhost"&lt;/span&gt;),
+    manager = &lt;span style="color: #93e0e3;"&gt;dict&lt;/span&gt;()))
+mailer.start()
+
+&lt;span style="color: #dfaf8f;"&gt;message&lt;/span&gt; = Message(author=&lt;span style="color: #cc9393;"&gt;"Foo Bar &lt;a href="mailto:foo%40bar.org"&gt;&amp;lt;foo@bar.org&amp;gt;&lt;/a&gt;"&lt;/span&gt;,
+                  to=cal.email,
+                  cc=[&lt;span style="color: #cc9393;"&gt;"woot@bar.org"&lt;/span&gt;,
+                      &lt;span style="color: #cc9393;"&gt;"bar@bar.org"&lt;/span&gt;],
+                  bcc=&lt;span style="color: #cc9393;"&gt;"zoo@bar.org"&lt;/span&gt;)
+&lt;span style="color: #dfaf8f;"&gt;message.subject&lt;/span&gt; = subject
+&lt;span style="color: #dfaf8f;"&gt;message.plain&lt;/span&gt; = body
+mailer.send(message)
+
+mailer.stop()
+&lt;/pre&gt;
+
+</content></entry><entry><title type="html">FormEncode: (1) Introduction</title><author><name>nil</name></author><link href="http://morediff.info/posts/2012/12/15_formencode-1-introduction.html"/><updated>2012-12-15T02:51:00Z</updated><published>2012-12-15T02:51:00Z</published><id>posts/2012/12/15_formencode-1-introduction.html</id><category scheme="/tags/formencode.html" term="formencode" label="formencode"/><category scheme="/tags/python.html" term="python" label="python"/><content type="html">&lt;p&gt;
 Suppose we have a form in our &lt;a href="http://www.makotemplates.org/"&gt;mako&lt;/a&gt; template as follows:
 &lt;/p&gt;
 
@@ -506,7 +546,7 @@ from our "Hello World!" example.
 
 
 
-&lt;pre class="src src-org"&gt;&lt;span style="color: #b2b2b2;"&gt;#+TITLE:&lt;/span&gt; &lt;span style="color: #afffff; font-weight: bold;"&gt;Hello World Blog&lt;/span&gt;
+&lt;pre class="src src-org"&gt;&lt;span style="color: #b3b3b3;"&gt;#+TITLE:&lt;/span&gt; &lt;span style="color: #afeeee; font-weight: bold;"&gt;Hello World Blog&lt;/span&gt;
 &lt;span style="color: #7f9f7f;"&gt;#+DESCRIPTION: How to create a basic blog using o-blog&lt;/span&gt;
 
 &lt;span style="color: #7f9f7f;"&gt;#+STARTUP: logdone&lt;/span&gt;
@@ -532,17 +572,17 @@ from our "Hello World!" example.
 
 &lt;span style="color: #7f9f7f;"&gt;#+o_blog_row_column 4&lt;/span&gt;
 
-&lt;span style="color: #7f9f7f;"&gt;#+HTML:&lt;/span&gt; &lt;span style="color: #b2b2b2;"&gt;&amp;lt;div class="hero-unit" style="font-size: 100%;"&amp;gt;&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;#+HTML:&lt;/span&gt; &lt;span style="color: #b3b3b3;"&gt;&amp;lt;div class="hero-unit" style="font-size: 100%;"&amp;gt;&lt;/span&gt;
 
 ,&lt;span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;"&gt;/icon-github-sign icon-white/ github&lt;/span&gt;
 
-&lt;span style="color: #7f9f7f;"&gt;#+HTML:&lt;/span&gt; &lt;span style="color: #b2b2b2;"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;#+HTML:&lt;/span&gt; &lt;span style="color: #b3b3b3;"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 
 &lt;span style="color: #7f9f7f;"&gt;#+end_o_blog_row&lt;/span&gt;
 
 &lt;span style="color: #7f9f7f;"&gt;#+begin_o_blog_row 5&lt;/span&gt;
 &lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Hello World&lt;/span&gt;
-,    Welcome to our &lt;span style="color: #b2b2b2;"&gt;=Hello World=&lt;/span&gt; demo site.
+,    Welcome to our &lt;span style="color: #b3b3b3;"&gt;=Hello World=&lt;/span&gt; demo site.
 
 &lt;span style="color: #7f9f7f;"&gt;#+end_o_blog_row&lt;/span&gt;
 
@@ -557,8 +597,8 @@ from our "Hello World!" example.
 ,  :SNIPPET: t
 ,  :END:
 
-,   &lt;span style="color: #b2b2b2;"&gt;=Hello World=&lt;/span&gt; demo site using o-blog
- 
+,   &lt;span style="color: #b3b3b3;"&gt;=Hello World=&lt;/span&gt; demo site using o-blog
+
 &lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Navigation&lt;/span&gt;
 ,  :PROPERTIES:
 ,  :SNIPPET: t
@@ -581,10 +621,10 @@ from our "Hello World!" example.
 ,   :PROPERTIES:
 ,   :END:
 
-,   This is our &lt;span style="color: #b2b2b2;"&gt;=Hello World=&lt;/span&gt; example by using &lt;span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;"&gt;o-blog&lt;/span&gt;.
-,   It's required to insert an empty line between &lt;span style="color: #b2b2b2;"&gt;=:END:=&lt;/span&gt; and the content
+,   This is our &lt;span style="color: #b3b3b3;"&gt;=Hello World=&lt;/span&gt; example by using &lt;span style="color: #dc8cc3; background-color: #3f3f3f;"&gt;o-blog.&lt;/span&gt;
+,   It's required to insert an empty line between &lt;span style="color: #b3b3b3;"&gt;=:END:=&lt;/span&gt; and the content
 ,   of the post. A post only get published when it's state cycle changed
-,   from &lt;span style="color: #b2b2b2;"&gt;=TODO=&lt;/span&gt; to &lt;span style="color: #b2b2b2;"&gt;=DONE=&lt;/span&gt;  which is a great feature which allows us to
+,   from &lt;span style="color: #b3b3b3;"&gt;=TODO=&lt;/span&gt; to &lt;span style="color: #b3b3b3;"&gt;=DONE=&lt;/span&gt;  which is a great feature which allows us to
 ,   keep our in-progress post private until it's done.
 
 &lt;/pre&gt;

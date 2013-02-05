@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>More is Different</title>
+    <title>Send emails via marrow.mailer</title>
     <link rel="stylesheet" type="text/less" href="../../../style/less/o-blog.less"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version 1.2"/>
@@ -69,23 +69,108 @@
       <div class="container">
 	<ul class="breadcrumb">
   <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
-  <li><a href="../../../archives.html">Archives</a> <span class="divider">/</span></li><li><a href="../../index.html">Posts</a> <span class="divider">/</span></li><li><a href="../index.html">2012</a> <span class="divider">/</span></li><li>12</li>
+  <li><a href="../../../posts/index.html">Posts</a> <span class="divider">/</span></li><li><a href="../../../posts/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../posts/2013/01/index.html">01</a> <span class="divider">/</span></li><li>Send emails via marrow.mailer</li>
   </ul>
 
       </div>
     </div>
     <div id="page" class="container">
 
-<article>
-  <div class="article-content">
-    <nav class="archives">
-      <ul class="month 2012 12">
-  <li>15 <a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li><li>15 <a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li><li>15 <a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li><li>14 <a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
-</ul>
+  <header class="article-header">
 
-    </nav>
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">29</div>
+	  <div class=" date-m"><a href="../../../posts/2013/01/index.html">Jan</a></div>
+	  <div class=" date-y"><a href="../../../posts/2013/index.html">2013</a>
+	  </div>
+	</div>
+	<div class="span1">
+	  <div class="qr-code">
+  <img src="http://chart.apis.google.com/chart?chs=50x50&cht=qr&chld=|0&chl=http%3A%2F%2Fmorediff.info%2Fposts%2F2013%2F01%2F29_send-emails-via-marrowmailer.html"
+       alt="qr-code" />
+</div>
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">Send emails via marrow.mailer</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../posts/2012/12/15_formencode-1-introduction.html"><i class="icon-chevron-left"></i>&nbsp;FormEncode: (1) Introduction</a></li><li class="next">&nbsp;</li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <p>
+First, I retrieve all the calendar for this week from the database:
+</p>
+
+
+<pre class="src src-python"><span style="color: #dfaf8f;">now</span> = datetime.now()
+<span style="color: #dfaf8f;">nextweek</span> = now + timedelta(days=7)
+<span style="color: #dfaf8f;">cal</span> = (
+    session.query(model.Calendar)
+        .<span style="color: #93e0e3;">filter</span>(between(model.Calendar.fake_date, now, nextweek))
+).first()
+</pre>
+
+
+<p>
+Then, setup the mailer via marrow.mailer
+</p>
+
+
+<pre class="src src-python"><span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">start the mailer daemon. I use postfix as my email agent so here I use</span>
+<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">localhost as host</span>
+<span style="color: #dfaf8f;">mailer</span> = Mailer(<span style="color: #93e0e3;">dict</span>(
+    transport = <span style="color: #93e0e3;">dict</span>(
+        use = <span style="color: #cc9393;">"smtp"</span>,
+        host = <span style="color: #cc9393;">"localhost"</span>),
+    manager = <span style="color: #93e0e3;">dict</span>()))
+mailer.start()
+
+<span style="color: #dfaf8f;">message</span> = Message(author=<span style="color: #cc9393;">"Foo Bar <a href="mailto:foo%40bar.org">&lt;foo@bar.org&gt;</a>"</span>,
+                  to=cal.email,
+                  cc=[<span style="color: #cc9393;">"woot@bar.org"</span>,
+                      <span style="color: #cc9393;">"bar@bar.org"</span>],
+                  bcc=<span style="color: #cc9393;">"zoo@bar.org"</span>)
+<span style="color: #dfaf8f;">message.subject</span> = subject
+<span style="color: #dfaf8f;">message.plain</span> = body
+mailer.send(message)
+
+mailer.stop()
+</pre>
+
+
   </div>
-</article>
+
+  <footer class="well article-footer">
+    Posted on <time datetime="2013-01-29T21:58:00Z"> Tuesday January, 29 2013 at 21:58:00</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> related tags</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/python.html">python</a></li><li class="label label-inverse small"><a href="../../../tags/email.html">email</a></li><li class="label label-inverse small"><a href="../../../tags/mailer.html">mailer</a></li><li class="label label-inverse small"><a href="../../../tags/postfix.html">postfix</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'morediff'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
       </div>
       <div id="footer">
 	<div class="container">
