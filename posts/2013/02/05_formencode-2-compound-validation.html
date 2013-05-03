@@ -30,37 +30,34 @@
           </a>
 	  <a class="brand" href="../../../index.html">More is Different</a>
 	  <div class="nav-collapse collapse">
-	    <ul>
+	    <ul class="org-ul">
 <li><a href="../../../index.html"><i>icon-home icon-white</i> Home</a>
-
 </li>
-<li><a href="#"><i>icon-file icon-white</i> Posts</a>
-<ul>
+
+<li><i><i>icon-file icon-white</i> Posts</i>
+<ul class="org-ul">
 <li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a>
 </li>
 <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a>
 </li>
 <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a>
 </li>
-<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a>
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a>
 </li>
-<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">Score My Mutt</a>
-
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Blog Setup</a>
 </li>
 </ul>
-
 </li>
+
 <li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
-
 </li>
+
 <li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
-
 </li>
+
 <li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
 </li>
 </ul>
-
-
 
 	  </div>
 	</div>
@@ -111,7 +108,7 @@ Suppose we have a form in which two inputs need to be the same, i.e.: email
 matching or password matching.
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">import</span> formencode
 <span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> validators <span style="color: #f0dfaf; font-weight: bold;">as</span> v
@@ -123,13 +120,14 @@ matching or password matching.
     <span style="color: #dfaf8f;">chained_validators</span> = [v.FieldsMatch(<span style="color: #cc9393;">"email_input"</span>,
                                         <span style="color: #cc9393;">"email_input_confirm"</span>)]
 </pre>
-
+</div>
 
 <p>
 <code>chained_validators</code> runs after all other validators inside of
 <code>Registration</code> is done. <code>v.FieldsMatch</code> will verify that the two given
 fields match with each other.
 </p>
+
 <p>
 If we have a input field which expect a user input a integer in
 between 0 and 99. When we get the input in the backend, it's always a
@@ -137,7 +135,7 @@ string. Before we need to validate using <code>OneOf</code>, we need to convert
 the input from <code>string</code> to <code>int</code> via <code>Int</code>.
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">import</span> formencode
 <span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> compound <span style="color: #f0dfaf; font-weight: bold;">as</span> c
@@ -150,7 +148,7 @@ the input from <code>string</code> to <code>int</code> via <code>Int</code>.
     <span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">Pipe validates forwards</span>
     <span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">numerator = c.Pipe(v.Int(), v.OneOf(range(100)))</span>
 </pre>
-
+</div>
 
 <p>
 Now suppose we have a form with a group of employees. Each employee
@@ -161,11 +159,12 @@ are going to validate. Thus, we can not use Brute-force validation
 like we did before. <a href="http://www.formencode.org/">Formencode</a> provides a function called
 <code>formencode.ForEach</code> which helps us solve similar problems.
 </p>
+
 <p>
 Here is how our form looks like:
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-html">&lt;<span style="color: #8cd0d3;">form</span>&gt;
     &lt;<span style="color: #8cd0d3;">table</span>&gt;
@@ -191,13 +190,13 @@ Here is how our form looks like:
     &lt;/<span style="color: #8cd0d3;">table</span>&gt;
 &lt;/<span style="color: #8cd0d3;">form</span>&gt;
 </pre>
-
+</div>
 
 <p>
 The validation class definition will be
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">import</span> formencode
 <span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> validators <span style="color: #f0dfaf; font-weight: bold;">as</span> v
@@ -214,7 +213,7 @@ The validation class definition will be
 <span style="color: #f0dfaf; font-weight: bold;">class</span> <span style="color: #7cb8bb;">Employees</span>(formencode.Schema):
     <span style="color: #dfaf8f;">employee</span> = formencode.ForEach(Employee())
 </pre>
-
+</div>
 
   </div>
 
@@ -250,36 +249,36 @@ The validation class definition will be
 	    <nav class="span3">
 	      <h1>About</h1>
 	      <p>
- <a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
+<a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
 </p>
+
 	    </nav>
 	    <nav id="links" class="span3">
 	      <h1>Links</h1>
 	      <ul>
-		<ul>
+		<ul class="org-ul">
 <li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
-
 </li>
+
 <li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
-
 </li>
+
 <li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
 </li>
 </ul>
-
 
 	      </ul>
 	    </nav>
 	    <nav id="archives" class="span3">
 	      <h1><a href="../../../archives.html">Archives</a></h1>
 	      <ul>
-		<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a></li> <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
+		<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a></li> <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
 	      <h1><a href="../../../tags/index.html">Tags</a></h1>
 	      <ul>
-  <li style="font-size: 80.00%;"><a href="../../../tags/algorithms.html">algorithms</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fibonacci.html">fibonacci</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/palindrome.html">palindrome</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/setup.html">setup</a></li>
+  <li style="font-size: 150.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/setup.html">setup</a></li>
 </ul>
 
 	    </nav>

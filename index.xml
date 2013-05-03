@@ -10,7 +10,7 @@ Suppose we have a form in which two inputs need to be the same, i.e.: email
 matching or password matching.
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-python"&gt;&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; formencode
 &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;from&lt;/span&gt; formencode &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; validators &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;as&lt;/span&gt; v
@@ -22,13 +22,14 @@ matching or password matching.
     &lt;span style="color: #dfaf8f;"&gt;chained_validators&lt;/span&gt; = [v.FieldsMatch(&lt;span style="color: #cc9393;"&gt;"email_input"&lt;/span&gt;,
                                         &lt;span style="color: #cc9393;"&gt;"email_input_confirm"&lt;/span&gt;)]
 &lt;/pre&gt;
-
+&lt;/div&gt;
 
 &lt;p&gt;
 &lt;code&gt;chained_validators&lt;/code&gt; runs after all other validators inside of
 &lt;code&gt;Registration&lt;/code&gt; is done. &lt;code&gt;v.FieldsMatch&lt;/code&gt; will verify that the two given
 fields match with each other.
 &lt;/p&gt;
+
 &lt;p&gt;
 If we have a input field which expect a user input a integer in
 between 0 and 99. When we get the input in the backend, it's always a
@@ -36,7 +37,7 @@ string. Before we need to validate using &lt;code&gt;OneOf&lt;/code&gt;, we need
 the input from &lt;code&gt;string&lt;/code&gt; to &lt;code&gt;int&lt;/code&gt; via &lt;code&gt;Int&lt;/code&gt;.
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-python"&gt;&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; formencode
 &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;from&lt;/span&gt; formencode &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; compound &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;as&lt;/span&gt; c
@@ -49,7 +50,7 @@ the input from &lt;code&gt;string&lt;/code&gt; to &lt;code&gt;int&lt;/code&gt; v
     &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Pipe validates forwards&lt;/span&gt;
     &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;numerator = c.Pipe(v.Int(), v.OneOf(range(100)))&lt;/span&gt;
 &lt;/pre&gt;
-
+&lt;/div&gt;
 
 &lt;p&gt;
 Now suppose we have a form with a group of employees. Each employee
@@ -60,11 +61,12 @@ are going to validate. Thus, we can not use Brute-force validation
 like we did before. &lt;a href="http://www.formencode.org/"&gt;Formencode&lt;/a&gt; provides a function called
 &lt;code&gt;formencode.ForEach&lt;/code&gt; which helps us solve similar problems.
 &lt;/p&gt;
+
 &lt;p&gt;
 Here is how our form looks like:
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-html"&gt;&amp;lt;&lt;span style="color: #8cd0d3;"&gt;form&lt;/span&gt;&amp;gt;
     &amp;lt;&lt;span style="color: #8cd0d3;"&gt;table&lt;/span&gt;&amp;gt;
@@ -90,13 +92,13 @@ Here is how our form looks like:
     &amp;lt;/&lt;span style="color: #8cd0d3;"&gt;table&lt;/span&gt;&amp;gt;
 &amp;lt;/&lt;span style="color: #8cd0d3;"&gt;form&lt;/span&gt;&amp;gt;
 &lt;/pre&gt;
-
+&lt;/div&gt;
 
 &lt;p&gt;
 The validation class definition will be
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-python"&gt;&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; formencode
 &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;from&lt;/span&gt; formencode &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; validators &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;as&lt;/span&gt; v
@@ -113,7 +115,7 @@ The validation class definition will be
 &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;class&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;Employees&lt;/span&gt;(formencode.Schema):
     &lt;span style="color: #dfaf8f;"&gt;employee&lt;/span&gt; = formencode.ForEach(Employee())
 &lt;/pre&gt;
-
+&lt;/div&gt;
 </content></entry><entry><title type="html">Send emails via marrow.mailer</title><author><name>nil</name></author><link href="http://morediff.info/posts/2013/01/29_send-emails-via-marrowmailer.html"/><updated>2013-01-29T21:58:00Z</updated><published>2013-01-29T21:58:00Z</published><id>posts/2013/01/29_send-emails-via-marrowmailer.html</id><category scheme="/tags/python.html" term="python" label="python"/><category scheme="/tags/email.html" term="email" label="email"/><category scheme="/tags/mailer.html" term="mailer" label="mailer"/><category scheme="/tags/postfix.html" term="postfix" label="postfix"/><content type="html">&lt;p&gt;
 I have a web app where authorized users can log in to edit a
 schedule. In order to remind the users mentioned in the schedule on a
@@ -121,10 +123,11 @@ weekly base, a mailer running inside of cron is
 needed. &lt;a href="https://github.com/marrow/marrow.mailer"&gt;marrow.mailer&lt;/a&gt; is
 a very handy framework to help achieve this goal.
 &lt;/p&gt;
+
 &lt;p&gt;
 First, I retrieve all the calendar for this week from the database:
 &lt;/p&gt;
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-python"&gt;&lt;span style="color: #dfaf8f;"&gt;now&lt;/span&gt; = datetime.now()
 &lt;span style="color: #dfaf8f;"&gt;nextweek&lt;/span&gt; = now + timedelta(days=7)
@@ -133,12 +136,12 @@ First, I retrieve all the calendar for this week from the database:
         .&lt;span style="color: #93e0e3;"&gt;filter&lt;/span&gt;(between(model.Calendar.fake_date, now, nextweek))
 ).first()
 &lt;/pre&gt;
-
+&lt;/div&gt;
 
 &lt;p&gt;
 Then, setup the mailer via marrow.mailer
 &lt;/p&gt;
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-python"&gt;&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;start the mailer daemon. I use postfix as my email agent so here I use&lt;/span&gt;
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;localhost as host&lt;/span&gt;
@@ -160,16 +163,17 @@ mailer.send(message)
 
 mailer.stop()
 &lt;/pre&gt;
-
+&lt;/div&gt;
 </content></entry><entry><title type="html">FormEncode: (1) Introduction</title><author><name>nil</name></author><link href="http://morediff.info/posts/2012/12/15_formencode-1-introduction.html"/><updated>2012-12-15T02:51:00Z</updated><published>2012-12-15T02:51:00Z</published><id>posts/2012/12/15_formencode-1-introduction.html</id><category scheme="/tags/formencode.html" term="formencode" label="formencode"/><category scheme="/tags/python.html" term="python" label="python"/><content type="html">&lt;p&gt;
 &lt;a href="https://github.com/bdoms/formencode"&gt;FormEncode&lt;/a&gt; is very helpful to validate forms data. Here is a very
 simple example to show how to use it.
 &lt;/p&gt;
+
 &lt;p&gt;
 Suppose we have a form in our &lt;a href="http://www.makotemplates.org/"&gt;mako&lt;/a&gt; template as follows:
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-html"&gt;  &amp;lt;&lt;span style="color: #8cd0d3;"&gt;form&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;id&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"formExample"&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;method&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"post"&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;action&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"${c.url.to.action}"&lt;/span&gt;&amp;gt;
   &amp;lt;&lt;span style="color: #8cd0d3;"&gt;table&lt;/span&gt;&amp;gt;
@@ -181,14 +185,14 @@ Suppose we have a form in our &lt;a href="http://www.makotemplates.org/"&gt;mako
   &amp;lt;/&lt;span style="color: #8cd0d3;"&gt;table&lt;/span&gt;&amp;gt;
 &amp;lt;/&lt;span style="color: #8cd0d3;"&gt;form&lt;/span&gt;&amp;gt;
 &lt;/pre&gt;
-
+&lt;/div&gt;
 
 &lt;p&gt;
 To validate these three input fields, we need to define a class like
 this:
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-python"&gt;&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; formencode
 &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;from&lt;/span&gt; formencode &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;import&lt;/span&gt; validators
@@ -198,7 +202,7 @@ this:
     &lt;span style="color: #dfaf8f;"&gt;int1&lt;/span&gt; = validators.Int(&lt;span style="color: #93e0e3;"&gt;min&lt;/span&gt;=30, &lt;span style="color: #93e0e3;"&gt;max&lt;/span&gt;=100)
     &lt;span style="color: #dfaf8f;"&gt;string1&lt;/span&gt; = validators.String(&lt;span style="color: #93e0e3;"&gt;max&lt;/span&gt;=128, strip=&lt;span style="color: #bfebbf;"&gt;True&lt;/span&gt;)
 &lt;/pre&gt;
-
+&lt;/div&gt;
 
 &lt;p&gt;
 As we can see from the above example, formencode matches each input
@@ -206,350 +210,13 @@ via the name attribute within a tag. In the controller, we'll
 validate all parameters from the above form.
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-python"&gt;&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;def&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;example_action&lt;/span&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;self&lt;/span&gt;, **kwargs):
     &lt;span style="color: #cc9393;"&gt;"""Demo action to show how formencode works."""&lt;/span&gt;
 
     &lt;span style="color: #dfaf8f;"&gt;example_form&lt;/span&gt; = myFormValidation(request.params)
 &lt;/pre&gt;
-
-</content></entry><entry><title type="html">A Fibonacci Palindrome Problem</title><author><name>nil</name></author><link href="http://morediff.info/posts/2012/12/15_a-fibonacci-palindrome-problem.html"/><updated>2012-12-15T02:37:00Z</updated><published>2012-12-15T02:37:00Z</published><id>posts/2012/12/15_a-fibonacci-palindrome-problem.html</id><category scheme="/tags/algorithms.html" term="algorithms" label="algorithms"/><category scheme="/tags/fibonacci.html" term="fibonacci" label="fibonacci"/><category scheme="/tags/palindrome.html" term="palindrome" label="palindrome"/><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
-&lt;h3 id="sec-1"&gt;The Problem&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-1"&gt;
-
-&lt;p&gt;Find the longest Fibonacci palindrome from a sequence of unsigned
-integers.
-&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div id="outline-container-2" class="outline-3"&gt;
-&lt;h3 id="sec-2"&gt;Algorithm Description&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-2"&gt;
-
-&lt;p&gt;Scan from the beginning for the sequence to the end to find out all
-possible Fibonacci sequence. For each found Fibonacci sequence,
-compare the known longest palindrome so far with the size of the
-current Fibonacci. If the size of the current Fibonacci is bigger the
-known longest Fibonacci palindrome, then find the longest palindrome
-from the current Fibonacci.  Any parts of a Fibonacci sequence are
-also Fibonacci sequences. Scanning the sequence costs O(n) time.
-&lt;/p&gt;
-&lt;p&gt;
-To find the longest palindrome from a sequence, we use a central
-expanding method. Scanning from the beginning to the end of the
-sequence, for each item, expand to its right and left hand at the same
-pace. For example: 1 1 [ 2 ] 1 1 &amp;ndash;&amp;gt; expand from position 2 to
-position 1 and 3, then to the position 0 and 4.  1 1 [2 2] 1 1 &amp;ndash;&amp;gt;
-expand from position 2 3 to position 1 and 4, then to the position 0
-and 5 This will take O(m &amp;times; m) time, where m is the length of the given
-sub-sequence.
-&lt;/p&gt;
-&lt;p&gt;
-So the total time cost is O(n &amp;times; m&lt;sup&gt;2&lt;/sup&gt;). The worst case is O(n&lt;sup&gt;3&lt;/sup&gt;) in
-theory. In practice, it should work faster.
-&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div id="outline-container-3" class="outline-3"&gt;
-&lt;h3 id="sec-3"&gt;Source Code&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-3"&gt;
-
-
-
-
-&lt;pre class="src src-c++"&gt;&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;file: FibonacciPalindrome.hpp&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;THE Fibonacci palindrome problem&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;--------------------------------&lt;/span&gt;
-&lt;span style="color: #94bff3;"&gt;#if&lt;/span&gt;&lt;span style="color: #94bff3;"&gt;n&lt;/span&gt;&lt;span style="color: #94bff3;"&gt;def&lt;/span&gt; _FIBONACCI_PALINDROME
-&lt;span style="color: #94bff3;"&gt;#define&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;_FIBONACCI_PALINDROME&lt;/span&gt;
-
-
- &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Find the longest Fibonacci palindrome from a given integer sequence.&lt;/span&gt;
- &lt;span style="color: #7cb8bb;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;FindFibonacciPalindrome&lt;/span&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;const&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pSeq&lt;/span&gt;,
-                              &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;length&lt;/span&gt;,
-                              &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetStartIndex&lt;/span&gt;,
-                              &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetLength&lt;/span&gt;);
-
-
- &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Find the longest palindrome from a given Fibonacci sequence.&lt;/span&gt;
-&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;static&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;FindPalindrome&lt;/span&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;const&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt;,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt;,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *
-                           );
-
-
- &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Expand from a center to find the longest palindrome.&lt;/span&gt;
-&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;static&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;ExpandFromCenter&lt;/span&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;const&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *);
-
-&lt;span style="color: #94bff3;"&gt;#endif&lt;/span&gt; &lt;span style="color: #7f9f7f;"&gt;/* &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;End of _FIBONACCI_PALINDROME */&lt;/span&gt;
-
-
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;file: FibonacciPalindrome.cpp&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;The Fibonacci palindrome problem&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;--------------------------------&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Author: Wu Jiang &amp;lt;wujiang27 at gmail.com&amp;gt;&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Date: 03/04/2012&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;PROBLEM DESCRIPTION&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-------------------&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;A contiguous sequence of unsigned integers is considered a&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;"Fibonacci palindrome" if two conditions hold:&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;1. the sequence is the same whether read backward or forward.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;2. either the sequence has fewer than three elements, or&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;every contiguous three-element sequence {a, b, c} in it&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;satisfies at least one of these conditions:&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;$a == c, a + b == c, or a == b + c.$&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Write a C/C++ function that takes as input a non-empty sequence of&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;unsigned integers and efficiently finds the longest Fibonacci&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;palindrome in that sequence.  If there are multiple Fibonacci&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;palindromes of the largest length, finding any one of them is&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;sufficient.  Please use the following prototype:&lt;/span&gt;
-
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;SOLUTION DESCRIPTION&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;--------------------&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Scan from the beginning for the sequence to the end to find out all&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;possible Fibonacci sequence. For each found Fibonacci sequence,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;compare the known longest palindrome so far with the size of the&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;current Fibonacci. If the size of the current Fibonacci is bigger&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;than the known longest Fibonacci palindrome, then find the longest&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;palindrome from the current Fibonacci. Any parts of a Fibonacci&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;sequence are also Fibonacci sequences. Scanning the sequence costs&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;$O(n)$ time.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;To find the longest palindrome from a sequence, we use a central&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;expanding method. Scanning from the beginning to the end of the&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;sequence, for each item, expand to its right and left hand at the&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;same pace. For example:&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;$1 1 [2] 1 1$ --&amp;gt; expand from position 2 to position 1 and 3, then&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;to the position 0 and 4.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;$1 1 [2 2] 1 1$ --&amp;gt; expand from position 2 3 to position 1 and 4,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;then to the position 0 and 5&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;This will take $O(m*m)$ time, where m is the length of the given&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;sub-sequence.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;So the total time cost is $O(n*m^2)$. The worst case is $O(n^3)$ in&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;theory. In practice, it should work faster.&lt;/span&gt;
-
-
-&lt;span style="color: #94bff3;"&gt;#include&lt;/span&gt; &lt;span style="color: #cc9393;"&gt;&amp;lt;assert.h&amp;gt;&lt;/span&gt;
-&lt;span style="color: #94bff3;"&gt;#include&lt;/span&gt; &lt;span style="color: #cc9393;"&gt;"FibonacciPalindrome.hpp"&lt;/span&gt;
-
-
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;FindFibonacciPalindrome: unsigned int *pSeq, unsigned int length,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;unsigned int *pRetStartIndex, unsigned int *pRetLength --&amp;gt; void&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-----------------------------------------------------------------&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;*pSeq: the given sequence of unsigned intergers&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;length: the sequence length&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;*pRetStartIndex: where the maximum Fibonacci palindrome starts&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;*pRetLength: the length of the maximum Fibonacci palindrome&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Find the longest Fibonacci palindrome within the given sequence of&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;unsigned integers.x&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;PRE: pSeq is not NULL&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//      &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetStartIndex and pRetLength should be allocated&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;POS: *pRetStartIndex, *pRetLength may be changed&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Fibonacci palindrome example:&lt;/span&gt;
-&lt;span style="color: #7cb8bb;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;FindFibonacciPalindrome&lt;/span&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;const&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pSeq&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;length&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetStartIndex&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetLength&lt;/span&gt;) {
-    assert(pSeq != &lt;span style="color: #bfebbf;"&gt;NULL&lt;/span&gt;);
-    assert(pRetStartIndex != &lt;span style="color: #bfebbf;"&gt;NULL&lt;/span&gt;);
-    assert(pRetLength != &lt;span style="color: #bfebbf;"&gt;NULL&lt;/span&gt;);
-    assert(length &amp;gt; 0);
-
-    *pRetStartIndex = 0;
-    *pRetLength = 1;
-    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (2 &amp;gt;= length) {
-        *pRetLength = length;
-        &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;return&lt;/span&gt;;
-    } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-        &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;fibonacciStart&lt;/span&gt; =0, &lt;span style="color: #dfaf8f;"&gt;fibonacciEnd&lt;/span&gt; = 0;
-        &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;To indicate if it is a Fibonacci sequence so far&lt;/span&gt;
-        &lt;span style="color: #7cb8bb;"&gt;bool&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;inFibonacci&lt;/span&gt; = &lt;span style="color: #bfebbf;"&gt;false&lt;/span&gt;;
-        &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;for&lt;/span&gt; (&lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;idx&lt;/span&gt; = 1; idx &amp;lt; length - 1; ++idx) {
-            &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; ((pSeq[idx - 1] != pSeq[idx + 1]) &amp;amp;&amp;amp;
-                (pSeq[idx - 1] + pSeq[idx] != pSeq[idx + 1]) &amp;amp;&amp;amp;
-                (pSeq[idx - 1] != pSeq[idx] + pSeq[idx + 1])) {
-                &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;When Fibonacci checking return false&lt;/span&gt;
-                &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (inFibonacci) {
-                    fibonacciEnd = idx;
-                    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (fibonacciEnd - fibonacciStart &amp;gt; *pRetLength) {
-                        FindPalindrome(pSeq, fibonacciStart, fibonacciEnd,
-                                       pRetStartIndex, pRetLength);
-                    } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-                        ;
-                    }
-                } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-                    ;
-                }
-                inFibonacci = &lt;span style="color: #bfebbf;"&gt;false&lt;/span&gt;;
-            } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-                &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;When Fibonacci checking return true&lt;/span&gt;
-                &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (&lt;span style="color: #dcdccc;"&gt;!&lt;/span&gt;inFibonacci) {
-                    fibonacciStart = idx - 1;
-                } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-                    ;
-                }
-                &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;When it reaches the end of the sequence and it is&lt;/span&gt;
-                &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;still a palindrome&lt;/span&gt;
-                &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (length - 2 == idx) {
-                    fibonacciEnd = idx + 1;
-                    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (fibonacciEnd - fibonacciStart &amp;gt; *pRetLength) {
-                        FindPalindrome(pSeq, fibonacciStart, fibonacciEnd,
-                                       pRetStartIndex, pRetLength);
-                    } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-                        ;
-                    }
-                } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-                    ;
-                }
-                inFibonacci = &lt;span style="color: #bfebbf;"&gt;true&lt;/span&gt;;
-            }
-        }
-    }
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;If *pRetLength &amp;lt; 3, then scan from the beginning to the end of&lt;/span&gt;
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;the sequence by a group of two items to check if there are any&lt;/span&gt;
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Fibonacci palindrome with length of 2. i.e. 2 1 1 --&amp;gt; 1 1&lt;/span&gt;
-    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (3 &amp;gt; *pRetLength) {
-        &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;for&lt;/span&gt; (&lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;idx&lt;/span&gt; = 0; idx &amp;lt; length - 1; ++idx) {
-            FindPalindrome(pSeq, idx, idx + 1, pRetStartIndex, pRetLength);
-        }
-    } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-        ;
-    }
-    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;return&lt;/span&gt;;
-}
-
-
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;AUX FUNCTIONS DEFINITION&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;------------------------&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;FindPalindrome: unsigned int *pSeq, unsigned int fibonacciStart,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//                 &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;unsigned int fibonacciEnd, unsigned int *&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//                 &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetStartIndex, unsigned int pRetLength --&amp;gt; void&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-----------------------------------------------------------------&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pSeq: a sequence of unsigned integers&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;fibonacciStart: where a Fibonacci sequence within pSeq starts&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;fibonacciEnd: where a Fibonacci sequence within pSeq ends&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetStartIndex: where a Fibonacci Palindrome within pSeq starts&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetLength: the length of the Fibonacci Palindrome within pSeq&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Given a part of a sequence of unsigned integers which is a&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Fibonacci sequence, find the longest palindrome within that&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Fibonacci sequence.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;A Fibonacci sequence is a sequence satisfy the following&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;conditions.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;1. the sequence is the same whether read backward or forward.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;2. either the sequence has fewer than three elements, or&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;every contiguous three-element sequence {a, b, c} in it&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;satisfies at least one of these conditions: a==c, a+b==c, or a==b+c.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;PRE: fibonacciEnd &amp;gt; fibonacciStart&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//      &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pSeq is not NULL&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//      &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetStartIndex and pRetLength should be allocated&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;POS: *pRetStartIndex, *pRetLength may be changed&lt;/span&gt;
-&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;static&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;FindPalindrome&lt;/span&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;const&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pSeq&lt;/span&gt;,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;fibonacciStart&lt;/span&gt;,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;fibonacciEnd&lt;/span&gt;,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetStartIndex&lt;/span&gt;,
-                           &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetLength&lt;/span&gt;) {
-    assert(fibonacciEnd &amp;gt; fibonacciStart);
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Special cases with length 1 and 2&lt;/span&gt;
-    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (fibonacciStart == fibonacciEnd ||
-        ((fibonacciEnd - fibonacciStart == 1) &amp;amp;&amp;amp;
-         pSeq[fibonacciStart] == pSeq[fibonacciEnd])) {
-        *pRetStartIndex = fibonacciStart;
-        *pRetLength = fibonacciEnd - fibonacciStart + 1;
-        &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;return&lt;/span&gt;;
-    } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-        &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;maxLength&lt;/span&gt; = 1;
-        &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;maxStartIndex&lt;/span&gt; = fibonacciStart;
-        &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;for&lt;/span&gt; (&lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;idx&lt;/span&gt; = fibonacciStart + 1; idx &amp;lt; fibonacciEnd; ++idx) {
-            &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Odd palindrome&lt;/span&gt;
-            &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;sc: step counter&lt;/span&gt;
-            ExpandFromCenter(pSeq, fibonacciStart, fibonacciEnd, idx, idx,
-                             pRetStartIndex, pRetLength);
-            &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (pSeq[idx] == pSeq[idx + 1]) {
-                ExpandFromCenter(pSeq, fibonacciStart, fibonacciEnd,
-                                 idx, idx + 1, pRetStartIndex, pRetLength);
-            } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-                ;
-            }
-        }
-        &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;return&lt;/span&gt;;
-    }
-}
-
-
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;ExpandFromCenter: unsigned int *pSeq, unsigned int fibonacciStart,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//                   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;unsigned int fibonacciEnd, unsigned int lhand,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//                   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;unsigned int rhand, unsigned int *pRetStartIndex,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//                   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;unsigned int *pRetLength --&amp;gt; void&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-------------------------------------------------------------------&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pSeq: a sequence of unsigned integers&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;fibonacciStart: where a Fibonacci sequence within pSeq starts&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;fibonacciEnd: where a Fibonacci sequence within pSeq ends&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;lhand: left hand where expanding starts&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;rhand: right hand where expanding ends&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetStartIndex: where a Fibonacci Palindrome within pSeq starts&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//   &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetLength: the length of the Fibonacci Palindrome within pSeq&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Given the left hand and right hand of a center, expand from the two&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;sides to find out the longest palindrome.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;PRE: fibonacciEnd &amp;gt; fibonacciStart&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//      &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;rhand &amp;gt;= lhand&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//      &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pSeq is not NULL&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;//      &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;pRetStartIndex and pRetLength should be allocated&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;POS: *pRetStartIndex, *pRetLength may be changed&lt;/span&gt;
-&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;static&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;ExpandFromCenter&lt;/span&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;const&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pSeq&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;fibonacciStart&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;fibonacciEnd&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;lhand&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;rhand&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetStartIndex&lt;/span&gt;,
-                             &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; *&lt;span style="color: #dfaf8f;"&gt;pRetLength&lt;/span&gt;) {
-    assert(fibonacciEnd &amp;gt; fibonacciStart);
-    assert(rhand &amp;gt;= lhand);
-    assert(pSeq != &lt;span style="color: #bfebbf;"&gt;NULL&lt;/span&gt;);
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Step counter&lt;/span&gt;
-    &lt;span style="color: #7cb8bb;"&gt;unsigned&lt;/span&gt; &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;sc&lt;/span&gt; = 1;
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Deal with negative integers&lt;/span&gt;
-    &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;lidx&lt;/span&gt; = lhand - sc;
-    &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;lbound&lt;/span&gt; = fibonacciStart;
-    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;for&lt;/span&gt; ( ; lidx &amp;gt;= lbound &amp;amp;&amp;amp;
-              rhand + sc &amp;lt;= fibonacciEnd &amp;amp;&amp;amp;
-              pSeq[lhand - sc] == pSeq[rhand + sc];
-          ++sc, lidx = lhand - sc);
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Need to step back 1 position because sc has the steps which&lt;/span&gt;
-    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;makes the palindrome checking fail&lt;/span&gt;
-    --sc;
-    &lt;span style="color: #7cb8bb;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;curLength&lt;/span&gt; = sc * 2 + (rhand - lhand + 1);
-    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;if&lt;/span&gt; (*pRetLength &amp;lt; curLength) {
-        *pRetStartIndex = lhand - sc;
-        *pRetLength = curLength;
-    } &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;else&lt;/span&gt; {
-        ;
-    }
-    &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;return&lt;/span&gt;;
-}
-
-
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;EOF&lt;/span&gt;
-&lt;/pre&gt;
-
-&lt;/div&gt;
 &lt;/div&gt;
 </content></entry><entry><title type="html">Score My Mutt</title><author><name>nil</name></author><link href="http://morediff.info/posts/2012/12/15_score-my-mutt.html"/><updated>2012-12-15T02:21:00Z</updated><published>2012-12-15T02:21:00Z</published><id>posts/2012/12/15_score-my-mutt.html</id><category scheme="/tags/mutt.html" term="mutt" label="mutt"/><category scheme="/tags/email.html" term="email" label="email"/><category scheme="/tags/setup.html" term="setup" label="setup"/><content type="html">&lt;p&gt;
 At work, I receive 200 emails on average per day, including all
@@ -560,14 +227,16 @@ other important messages when I sort my Inbox by
 last-date-received. Sorting by scores inside of threads will solve
 this problem.
 &lt;/p&gt;
+
 &lt;p&gt;
-Mutt score at a glance.  According to Mutt manual &lt;sup&gt;&lt;a class="footref" name="fnr-.1" href="#fn-.1"&gt;1&lt;/a&gt;&lt;/sup&gt;, we can
+Mutt score at a glance.  According to Mutt manual &lt;sup&gt;&lt;a id="fnr.1" name="fnr.1" class="footref" href="#fn.1"&gt;1&lt;/a&gt;&lt;/sup&gt;, we can
 use these patterns for scoring. But my Mutt (1.5.21) does not
 recognize some of them, i.e.: &lt;b&gt;~h&lt;/b&gt;, &lt;b&gt;~b&lt;/b&gt;, &lt;b&gt;~B&lt;/b&gt;, etc.
 &lt;/p&gt;
-&lt;blockquote&gt;
 
-&lt;p&gt;~A              all messages &lt;br/&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+~A              all messages &lt;br/&gt;
 ~b EXPR         messages which contain EXPR in the message body &lt;br/&gt;
 ~B EXPR         messages which contain EXPR in the whole message &lt;br/&gt;
 ~c USER         messages carbon-copied to USER&lt;br/&gt;
@@ -607,7 +276,6 @@ recognize some of them, i.e.: &lt;b&gt;~h&lt;/b&gt;, &lt;b&gt;~b&lt;/b&gt;, &lt;
 &lt;/p&gt;
 &lt;/blockquote&gt;
 
-
 &lt;p&gt;
 The interesting ones are &lt;b&gt;~f&lt;/b&gt;, &lt;b&gt;~C&lt;/b&gt;, and &lt;b&gt;~s&lt;/b&gt;. They are pretty
 straight-forward. One thing needs to mention about &lt;b&gt;~f&lt;/b&gt; is that it
@@ -616,14 +284,14 @@ name. For example, if the sender is "hello world
 &amp;lt;morediff@moreisdifferent.info&amp;gt;", it does not check the "hello
 world" part, but the "morediff@moreisdifferent.info" part. As the
 following configuration file shows, you can &lt;b&gt;AND&lt;/b&gt; multiple patterns
-together.  &lt;span style="text-decoration:underline;"&gt;score "patternOne patternTwo patternMore" scoreNum&lt;/span&gt;
+together.  &lt;span class="underline"&gt;score "patternOne patternTwo patternMore" scoreNum&lt;/span&gt;
 means if a message satisfies all the
 conditions &lt;b&gt;patternOne&lt;/b&gt;, &lt;b&gt;patternTwo&lt;/b&gt;, and &lt;b&gt;patternMore&lt;/b&gt;, then it
 will be assigned the score &lt;b&gt;scoreNum&lt;/b&gt;. You can get a good idea of
 how to configure it by understanding the following example.
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-sh"&gt;&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;sorting method&lt;/span&gt;
 &lt;span style="color: #93e0e3;"&gt;set&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;sort&lt;/span&gt; = &lt;span style="color: #cc9393;"&gt;'threads'&lt;/span&gt;
@@ -652,30 +320,32 @@ score &lt;span style="color: #cc9393;"&gt;"~N"&lt;/span&gt; 2
 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;flagged messages&lt;/span&gt;
 score &lt;span style="color: #cc9393;"&gt;"~F"&lt;/span&gt; 1
 &lt;/pre&gt;
-
-
+&lt;/div&gt;
 
 &lt;hr/&gt;
-
 &lt;div id="footnotes"&gt;
 &lt;h2 class="footnotes"&gt;Footnotes: &lt;/h2&gt;
 &lt;div id="text-footnotes"&gt;
-&lt;p class="footnote"&gt;&lt;sup&gt;&lt;a class="footnum" name="fn-.1" href="#fnr-.1"&gt;1&lt;/a&gt;&lt;/sup&gt; . &lt;a href="http://www.mutt.org/doc/manual/manual-4.html#patterns"&gt;http://www.mutt.org/doc/manual/manual-4.html#patterns&lt;/a&gt;
-&lt;/p&gt;
+
+&lt;div class="footdef"&gt;&lt;sup&gt;&lt;a id="fn.1" name="fn.1" class="footnum" href="#fnr.1"&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;p class="footpara"&gt;
+. &lt;a href="http://www.mutt.org/doc/manual/manual-4.html#patterns"&gt;http://www.mutt.org/doc/manual/manual-4.html#patterns&lt;/a&gt;
+&lt;/p&gt;&lt;/div&gt;
+
+
 &lt;/div&gt;
-&lt;/div&gt;
-</content></entry><entry><title type="html">Blog Setup</title><author><name>nil</name></author><link href="http://morediff.info/posts/2012/12/14_blog-setup.html"/><updated>2012-12-14T16:53:00Z</updated><published>2012-12-14T16:53:00Z</published><id>posts/2012/12/14_blog-setup.html</id><category scheme="/tags/setup.html" term="setup" label="setup"/><content type="html">&lt;p&gt;
+&lt;/div&gt;</content></entry><entry><title type="html">Blog Setup</title><author><name>nil</name></author><link href="http://morediff.info/posts/2012/12/14_blog-setup.html"/><updated>2012-12-14T16:53:00Z</updated><published>2012-12-14T16:53:00Z</published><id>posts/2012/12/14_blog-setup.html</id><category scheme="/tags/setup.html" term="setup" label="setup"/><content type="html">&lt;p&gt;
 This blog is powered by &lt;a href="https://github.com/renard/o-blog"&gt;o-blog&lt;/a&gt;, which converts &lt;a href="http://orgmode.org"&gt;Org&lt;/a&gt; files into
 static html pages. As an &lt;a href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; + &lt;a href="http://orgmode.org"&gt;Org&lt;/a&gt; user, &lt;a href="https://github.com/renard/o-blog"&gt;o-blog&lt;/a&gt; is the best blog
 tool so far to myself. It allows me to use the all the features from
 &lt;a href="http://orgmode.org"&gt;Org&lt;/a&gt;, at the same time provides a lot of cool &lt;a href="http://renard.github.com/o-blog/features.html"&gt;features&lt;/a&gt;.
 &lt;/p&gt;
+
 &lt;p&gt;
 Setting up the basic page is relatively straight forward. Let's starts
 from our "Hello World!" example.
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-org"&gt;&lt;span style="color: #b3b3b3;"&gt;#+TITLE:&lt;/span&gt; &lt;span style="color: #afeeee; font-weight: bold;"&gt;Hello World Blog&lt;/span&gt;
 &lt;span style="color: #7f9f7f;"&gt;#+DESCRIPTION: How to create a basic blog using o-blog&lt;/span&gt;
@@ -683,83 +353,82 @@ from our "Hello World!" example.
 &lt;span style="color: #7f9f7f;"&gt;#+STARTUP: logdone&lt;/span&gt;
 
 &lt;span style="color: #7f9f7f;"&gt;#+TEMPLATE_DIR: templates&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;#+URL: http://helloworld.blog&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;#+URL: &lt;a href="http://helloworld.blog"&gt;http://helloworld.blog&lt;/a&gt;&lt;/span&gt;
 
 &lt;span style="color: #7f9f7f;"&gt;#+DISQUS: hello-world-demo&lt;/span&gt;
 &lt;span style="color: #7f9f7f;"&gt;#+FILENAME_SANITIZER: ob-sanitize-string&lt;/span&gt;
 &lt;span style="color: #7f9f7f;"&gt;#+POST_SORTER: ob-sort-posts-by-date&lt;/span&gt;
 
-&lt;span style="color: #dfaf8f; background-color: #3f3f3f;"&gt;* Home Page&lt;/span&gt;
+&lt;span style="color: #dfaf8f;"&gt;* Home Page&lt;/span&gt;
 ,  :PROPERTIES:
 ,  :PAGE: index.html
 ,  :TEMPLATE: blog_static_no_title.html
 ,  :END:
 
-&lt;span style="color: #7f9f7f;"&gt;#+begin_o_blog_row 8&lt;/span&gt;
+#+begin_o_blog_row 8
 
 #+begin_o_blog_hero_unit
-&amp;lt;h1&amp;gt;&amp;lt;lisp&amp;gt;(ob:blog-title BLOG)&amp;lt;/lisp&amp;gt;&amp;lt;/h1&amp;gt;
-&lt;span style="color: #7f9f7f;"&gt;#+end_o_blog_hero_unit&lt;/span&gt;
+#+HTML: &amp;lt;h1&amp;gt;&amp;lt;lisp&amp;gt;(ob:blog-title BLOG)&amp;lt;/lisp&amp;gt;&amp;lt;/h1&amp;gt;
+#+end_o_blog_hero_unit
 
-&lt;span style="color: #7f9f7f;"&gt;#+o_blog_row_column 4&lt;/span&gt;
+#+o_blog_row_column 4
 
-&lt;span style="color: #7f9f7f;"&gt;#+HTML:&lt;/span&gt; &lt;span style="color: #b3b3b3;"&gt;&amp;lt;div class="hero-unit" style="font-size: 100%;"&amp;gt;&lt;/span&gt;
+#+HTML: &amp;lt;div class="hero-unit" style="font-size: 100%;"&amp;gt;
 
-,&lt;span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;"&gt;/icon-github-sign icon-white/ github&lt;/span&gt;
+,&lt;span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;"&gt;&lt;a href="https://github.com"&gt;/icon-github-sign icon-white/ github&lt;/a&gt;&lt;/span&gt;
 
-&lt;span style="color: #7f9f7f;"&gt;#+HTML:&lt;/span&gt; &lt;span style="color: #b3b3b3;"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+#+HTML: &amp;lt;/div&amp;gt;
 
-&lt;span style="color: #7f9f7f;"&gt;#+end_o_blog_row&lt;/span&gt;
+#+end_o_blog_row
 
-&lt;span style="color: #7f9f7f;"&gt;#+begin_o_blog_row 5&lt;/span&gt;
-&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Hello World&lt;/span&gt;
+#+begin_o_blog_row 5
+&lt;span style="color: #bfebbf;"&gt;** Hello World&lt;/span&gt;
 ,    Welcome to our &lt;span style="color: #b3b3b3;"&gt;=Hello World=&lt;/span&gt; demo site.
 
-&lt;span style="color: #7f9f7f;"&gt;#+end_o_blog_row&lt;/span&gt;
+#+end_o_blog_row
 
-&lt;span style="color: #dfaf8f; background-color: #3f3f3f;"&gt;* Blog Details&lt;/span&gt;
-&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Copyright&lt;/span&gt;
+&lt;span style="color: #dfaf8f;"&gt;* Blog Details&lt;/span&gt;
+&lt;span style="color: #bfebbf;"&gt;** Copyright&lt;/span&gt;
 ,   :PROPERTIES:
 ,   :SNIPPET: t
 ,   :END:
 
-&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** About&lt;/span&gt;
+&lt;span style="color: #bfebbf;"&gt;** About&lt;/span&gt;
 ,  :PROPERTIES:
 ,  :SNIPPET: t
 ,  :END:
 
 ,   &lt;span style="color: #b3b3b3;"&gt;=Hello World=&lt;/span&gt; demo site using o-blog
 
-&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Navigation&lt;/span&gt;
+&lt;span style="color: #bfebbf;"&gt;** Navigation&lt;/span&gt;
 ,  :PROPERTIES:
 ,  :SNIPPET: t
 ,  :END:
 
-&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Navigation Footer&lt;/span&gt;
+&lt;span style="color: #bfebbf;"&gt;** Navigation Footer&lt;/span&gt;
 ,  :PROPERTIES:
 ,  :SNIPPET:t
 ,  :END:
 
-&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** Articles by tags&lt;/span&gt;
+&lt;span style="color: #bfebbf;"&gt;** Articles by tags&lt;/span&gt;
 ,   :PROPERTIES:
 ,   :PAGE: tags.html
 ,   :TEMPLATE: blog_post-by-tags.html
 ,   :END:
 
-&lt;span style="color: #dfaf8f; background-color: #3f3f3f;"&gt;* Posts&lt;/span&gt;
-&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt;** &lt;/span&gt;&lt;span style="color: #afd8af; font-weight: bold;"&gt;DONE&lt;/span&gt;&lt;span style="color: #8fb28f; background-color: #3f3f3f;"&gt; Hello World                         &lt;/span&gt;&lt;span style="color: #8fb28f; background-color: #3f3f3f; font-weight: bold;"&gt;:demo:hello_world:&lt;/span&gt;
+&lt;span style="color: #dfaf8f;"&gt;* Posts&lt;/span&gt;
+&lt;span style="color: #bfebbf;"&gt;** &lt;/span&gt;&lt;span style="color: #afd8af; font-weight: bold;"&gt;DONE&lt;/span&gt;&lt;span style="color: #bfebbf;"&gt; Hello World                         &lt;/span&gt;&lt;span style="color: #bfebbf; font-weight: bold;"&gt;:demo:hello_world:&lt;/span&gt;
 ,   &lt;span style="color: #656555;"&gt;CLOSED:&lt;/span&gt; &lt;span style="color: #8cd0d3; text-decoration: underline;"&gt;[2012-12-15 Sat 15:35]&lt;/span&gt;
 ,   :PROPERTIES:
 ,   :END:
 
-,   This is our &lt;span style="color: #b3b3b3;"&gt;=Hello World=&lt;/span&gt; example by using &lt;span style="color: #dc8cc3; background-color: #3f3f3f;"&gt;o-blog.&lt;/span&gt;
+,   This is our &lt;span style="color: #b3b3b3;"&gt;=Hello World=&lt;/span&gt; example by using &lt;span style="color: #dc8cc3; background-color: #3f3f3f;"&gt;&lt;a href="http://renard.github.com/o-blog/index.html"&gt;o-blog&lt;/a&gt;.&lt;/span&gt;
 ,   It's required to insert an empty line between &lt;span style="color: #b3b3b3;"&gt;=:END:=&lt;/span&gt; and the content
 ,   of the post. A post only get published when it's state cycle changed
 ,   from &lt;span style="color: #b3b3b3;"&gt;=TODO=&lt;/span&gt; to &lt;span style="color: #b3b3b3;"&gt;=DONE=&lt;/span&gt;  which is a great feature which allows us to
 ,   keep our in-progress post private until it's done.
-
 &lt;/pre&gt;
-
+&lt;/div&gt;
 
 &lt;p&gt;
 After this, you can just type &lt;code&gt;M-x org-publish-blog&lt;/code&gt; to generate the
@@ -774,7 +443,7 @@ I push to my server. Since I also want to host a mirror site via
 server, I created a cron job which will &lt;code&gt;git pull&lt;/code&gt; every minute.
 &lt;/p&gt;
 
-
+&lt;div class="org-src-container"&gt;
 
 &lt;pre class="src src-sh"&gt;deploy workflow
 
@@ -786,8 +455,7 @@ server, I created a cron job which will &lt;code&gt;git pull&lt;/code&gt; every 
   |              |           |                  |           |              |
   |              |           |                  |           |              |
   +--------------+           +------------------+           +--------------+
-
 &lt;/pre&gt;
-
+&lt;/div&gt;
 </content></entry>
 </feed>

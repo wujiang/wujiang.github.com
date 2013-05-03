@@ -30,37 +30,34 @@
           </a>
 	  <a class="brand" href="../../../index.html">More is Different</a>
 	  <div class="nav-collapse collapse">
-	    <ul>
+	    <ul class="org-ul">
 <li><a href="../../../index.html"><i>icon-home icon-white</i> Home</a>
-
 </li>
-<li><a href="#"><i>icon-file icon-white</i> Posts</a>
-<ul>
+
+<li><i><i>icon-file icon-white</i> Posts</i>
+<ul class="org-ul">
 <li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a>
 </li>
 <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a>
 </li>
 <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a>
 </li>
-<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a>
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a>
 </li>
-<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">Score My Mutt</a>
-
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Blog Setup</a>
 </li>
 </ul>
-
 </li>
+
 <li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
-
 </li>
+
 <li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
-
 </li>
+
 <li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
 </li>
 </ul>
-
-
 
 	  </div>
 	</div>
@@ -112,12 +109,13 @@ static html pages. As an <a href="http://www.gnu.org/software/emacs/">Emacs</a> 
 tool so far to myself. It allows me to use the all the features from
 <a href="http://orgmode.org">Org</a>, at the same time provides a lot of cool <a href="http://renard.github.com/o-blog/features.html">features</a>.
 </p>
+
 <p>
 Setting up the basic page is relatively straight forward. Let's starts
 from our "Hello World!" example.
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-org"><span style="color: #b3b3b3;">#+TITLE:</span> <span style="color: #afeeee; font-weight: bold;">Hello World Blog</span>
 <span style="color: #7f9f7f;">#+DESCRIPTION: How to create a basic blog using o-blog</span>
@@ -125,83 +123,82 @@ from our "Hello World!" example.
 <span style="color: #7f9f7f;">#+STARTUP: logdone</span>
 
 <span style="color: #7f9f7f;">#+TEMPLATE_DIR: templates</span>
-<span style="color: #7f9f7f;">#+URL: http://helloworld.blog</span>
+<span style="color: #7f9f7f;">#+URL: <a href="http://helloworld.blog">http://helloworld.blog</a></span>
 
 <span style="color: #7f9f7f;">#+DISQUS: hello-world-demo</span>
 <span style="color: #7f9f7f;">#+FILENAME_SANITIZER: ob-sanitize-string</span>
 <span style="color: #7f9f7f;">#+POST_SORTER: ob-sort-posts-by-date</span>
 
-<span style="color: #dfaf8f; background-color: #3f3f3f;">* Home Page</span>
+<span style="color: #dfaf8f;">* Home Page</span>
 ,  :PROPERTIES:
 ,  :PAGE: index.html
 ,  :TEMPLATE: blog_static_no_title.html
 ,  :END:
 
-<span style="color: #7f9f7f;">#+begin_o_blog_row 8</span>
+#+begin_o_blog_row 8
 
 #+begin_o_blog_hero_unit
-&lt;h1&gt;&lt;lisp&gt;(ob:blog-title BLOG)&lt;/lisp&gt;&lt;/h1&gt;
-<span style="color: #7f9f7f;">#+end_o_blog_hero_unit</span>
+#+HTML: &lt;h1&gt;&lt;lisp&gt;(ob:blog-title BLOG)&lt;/lisp&gt;&lt;/h1&gt;
+#+end_o_blog_hero_unit
 
-<span style="color: #7f9f7f;">#+o_blog_row_column 4</span>
+#+o_blog_row_column 4
 
-<span style="color: #7f9f7f;">#+HTML:</span> <span style="color: #b3b3b3;">&lt;div class="hero-unit" style="font-size: 100%;"&gt;</span>
+#+HTML: &lt;div class="hero-unit" style="font-size: 100%;"&gt;
 
-,<span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;">/icon-github-sign icon-white/ github</span>
+,<span style="color: #d0bf8f; font-weight: bold; text-decoration: underline;"><a href="https://github.com">/icon-github-sign icon-white/ github</a></span>
 
-<span style="color: #7f9f7f;">#+HTML:</span> <span style="color: #b3b3b3;">&lt;/div&gt;</span>
+#+HTML: &lt;/div&gt;
 
-<span style="color: #7f9f7f;">#+end_o_blog_row</span>
+#+end_o_blog_row
 
-<span style="color: #7f9f7f;">#+begin_o_blog_row 5</span>
-<span style="color: #8fb28f; background-color: #3f3f3f;">** Hello World</span>
+#+begin_o_blog_row 5
+<span style="color: #bfebbf;">** Hello World</span>
 ,    Welcome to our <span style="color: #b3b3b3;">=Hello World=</span> demo site.
 
-<span style="color: #7f9f7f;">#+end_o_blog_row</span>
+#+end_o_blog_row
 
-<span style="color: #dfaf8f; background-color: #3f3f3f;">* Blog Details</span>
-<span style="color: #8fb28f; background-color: #3f3f3f;">** Copyright</span>
+<span style="color: #dfaf8f;">* Blog Details</span>
+<span style="color: #bfebbf;">** Copyright</span>
 ,   :PROPERTIES:
 ,   :SNIPPET: t
 ,   :END:
 
-<span style="color: #8fb28f; background-color: #3f3f3f;">** About</span>
+<span style="color: #bfebbf;">** About</span>
 ,  :PROPERTIES:
 ,  :SNIPPET: t
 ,  :END:
 
 ,   <span style="color: #b3b3b3;">=Hello World=</span> demo site using o-blog
 
-<span style="color: #8fb28f; background-color: #3f3f3f;">** Navigation</span>
+<span style="color: #bfebbf;">** Navigation</span>
 ,  :PROPERTIES:
 ,  :SNIPPET: t
 ,  :END:
 
-<span style="color: #8fb28f; background-color: #3f3f3f;">** Navigation Footer</span>
+<span style="color: #bfebbf;">** Navigation Footer</span>
 ,  :PROPERTIES:
 ,  :SNIPPET:t
 ,  :END:
 
-<span style="color: #8fb28f; background-color: #3f3f3f;">** Articles by tags</span>
+<span style="color: #bfebbf;">** Articles by tags</span>
 ,   :PROPERTIES:
 ,   :PAGE: tags.html
 ,   :TEMPLATE: blog_post-by-tags.html
 ,   :END:
 
-<span style="color: #dfaf8f; background-color: #3f3f3f;">* Posts</span>
-<span style="color: #8fb28f; background-color: #3f3f3f;">** </span><span style="color: #afd8af; font-weight: bold;">DONE</span><span style="color: #8fb28f; background-color: #3f3f3f;"> Hello World                         </span><span style="color: #8fb28f; background-color: #3f3f3f; font-weight: bold;">:demo:hello_world:</span>
+<span style="color: #dfaf8f;">* Posts</span>
+<span style="color: #bfebbf;">** </span><span style="color: #afd8af; font-weight: bold;">DONE</span><span style="color: #bfebbf;"> Hello World                         </span><span style="color: #bfebbf; font-weight: bold;">:demo:hello_world:</span>
 ,   <span style="color: #656555;">CLOSED:</span> <span style="color: #8cd0d3; text-decoration: underline;">[2012-12-15 Sat 15:35]</span>
 ,   :PROPERTIES:
 ,   :END:
 
-,   This is our <span style="color: #b3b3b3;">=Hello World=</span> example by using <span style="color: #dc8cc3; background-color: #3f3f3f;">o-blog.</span>
+,   This is our <span style="color: #b3b3b3;">=Hello World=</span> example by using <span style="color: #dc8cc3; background-color: #3f3f3f;"><a href="http://renard.github.com/o-blog/index.html">o-blog</a>.</span>
 ,   It's required to insert an empty line between <span style="color: #b3b3b3;">=:END:=</span> and the content
 ,   of the post. A post only get published when it's state cycle changed
 ,   from <span style="color: #b3b3b3;">=TODO=</span> to <span style="color: #b3b3b3;">=DONE=</span>  which is a great feature which allows us to
 ,   keep our in-progress post private until it's done.
-
 </pre>
-
+</div>
 
 <p>
 After this, you can just type <code>M-x org-publish-blog</code> to generate the
@@ -216,7 +213,7 @@ I push to my server. Since I also want to host a mirror site via
 server, I created a cron job which will <code>git pull</code> every minute.
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-sh">deploy workflow
 
@@ -228,9 +225,8 @@ server, I created a cron job which will <code>git pull</code> every minute.
   |              |           |                  |           |              |
   |              |           |                  |           |              |
   +--------------+           +------------------+           +--------------+
-
 </pre>
-
+</div>
 
   </div>
 
@@ -266,36 +262,36 @@ server, I created a cron job which will <code>git pull</code> every minute.
 	    <nav class="span3">
 	      <h1>About</h1>
 	      <p>
- <a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
+<a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
 </p>
+
 	    </nav>
 	    <nav id="links" class="span3">
 	      <h1>Links</h1>
 	      <ul>
-		<ul>
+		<ul class="org-ul">
 <li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
-
 </li>
+
 <li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
-
 </li>
+
 <li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
 </li>
 </ul>
-
 
 	      </ul>
 	    </nav>
 	    <nav id="archives" class="span3">
 	      <h1><a href="../../../archives.html">Archives</a></h1>
 	      <ul>
-		<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a></li> <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
+		<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a></li> <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
 	      <h1><a href="../../../tags/index.html">Tags</a></h1>
 	      <ul>
-  <li style="font-size: 80.00%;"><a href="../../../tags/algorithms.html">algorithms</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fibonacci.html">fibonacci</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/palindrome.html">palindrome</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/setup.html">setup</a></li>
+  <li style="font-size: 150.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/setup.html">setup</a></li>
 </ul>
 
 	    </nav>

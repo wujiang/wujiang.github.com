@@ -30,37 +30,34 @@
           </a>
 	  <a class="brand" href="../../../index.html">More is Different</a>
 	  <div class="nav-collapse collapse">
-	    <ul>
+	    <ul class="org-ul">
 <li><a href="../../../index.html"><i>icon-home icon-white</i> Home</a>
-
 </li>
-<li><a href="#"><i>icon-file icon-white</i> Posts</a>
-<ul>
+
+<li><i><i>icon-file icon-white</i> Posts</i>
+<ul class="org-ul">
 <li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a>
 </li>
 <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a>
 </li>
 <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a>
 </li>
-<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a>
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a>
 </li>
-<li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">Score My Mutt</a>
-
+<li><a href="../../../posts/2012/12/15_score-my-mutt.html">Blog Setup</a>
 </li>
 </ul>
-
 </li>
+
 <li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
-
 </li>
+
 <li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
-
 </li>
+
 <li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
 </li>
 </ul>
-
-
 
 	  </div>
 	</div>
@@ -99,7 +96,7 @@
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../posts/2012/12/14_blog-setup.html"><i class="icon-chevron-left"></i>&nbsp;Blog Setup</a></li><li class="next" style="text-align: right;"><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../posts/2012/12/14_blog-setup.html"><i class="icon-chevron-left"></i>&nbsp;Blog Setup</a></li><li class="next" style="text-align: right;"><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction&nbsp;<i class="icon-chevron-right"></i></a></li>
 	</ul>
       </nav>
     </div>
@@ -115,14 +112,16 @@ other important messages when I sort my Inbox by
 last-date-received. Sorting by scores inside of threads will solve
 this problem.
 </p>
+
 <p>
-Mutt score at a glance.  According to Mutt manual <sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>, we can
+Mutt score at a glance.  According to Mutt manual <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>, we can
 use these patterns for scoring. But my Mutt (1.5.21) does not
 recognize some of them, i.e.: <b>~h</b>, <b>~b</b>, <b>~B</b>, etc.
 </p>
-<blockquote>
 
-<p>~A              all messages <br/>
+<blockquote>
+<p>
+~A              all messages <br/>
 ~b EXPR         messages which contain EXPR in the message body <br/>
 ~B EXPR         messages which contain EXPR in the whole message <br/>
 ~c USER         messages carbon-copied to USER<br/>
@@ -162,7 +161,6 @@ recognize some of them, i.e.: <b>~h</b>, <b>~b</b>, <b>~B</b>, etc.
 </p>
 </blockquote>
 
-
 <p>
 The interesting ones are <b>~f</b>, <b>~C</b>, and <b>~s</b>. They are pretty
 straight-forward. One thing needs to mention about <b>~f</b> is that it
@@ -171,14 +169,14 @@ name. For example, if the sender is "hello world
 &lt;morediff@moreisdifferent.info&gt;", it does not check the "hello
 world" part, but the "morediff@moreisdifferent.info" part. As the
 following configuration file shows, you can <b>AND</b> multiple patterns
-together.  <span style="text-decoration:underline;">score "patternOne patternTwo patternMore" scoreNum</span>
+together.  <span class="underline">score "patternOne patternTwo patternMore" scoreNum</span>
 means if a message satisfies all the
 conditions <b>patternOne</b>, <b>patternTwo</b>, and <b>patternMore</b>, then it
 will be assigned the score <b>scoreNum</b>. You can get a good idea of
 how to configure it by understanding the following example.
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">sorting method</span>
 <span style="color: #93e0e3;">set</span> <span style="color: #dfaf8f;">sort</span> = <span style="color: #cc9393;">'threads'</span>
@@ -207,19 +205,20 @@ score <span style="color: #cc9393;">"~N"</span> 2
 <span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">flagged messages</span>
 score <span style="color: #cc9393;">"~F"</span> 1
 </pre>
-
-
+</div>
 
 <hr/>
-
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> . <a href="http://www.mutt.org/doc/manual/manual-4.html#patterns">http://www.mutt.org/doc/manual/manual-4.html#patterns</a>
-</p>
-</div>
-</div>
 
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+. <a href="http://www.mutt.org/doc/manual/manual-4.html#patterns">http://www.mutt.org/doc/manual/manual-4.html#patterns</a>
+</p></div>
+
+
+</div>
+</div>
   </div>
 
   <footer class="well article-footer">
@@ -254,36 +253,36 @@ score <span style="color: #cc9393;">"~F"</span> 1
 	    <nav class="span3">
 	      <h1>About</h1>
 	      <p>
- <a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
+<a href="https://github.com/wujiang"><i>icon-github-sign icon-white</i> github</a>
 </p>
+
 	    </nav>
 	    <nav id="links" class="span3">
 	      <h1>Links</h1>
 	      <ul>
-		<ul>
+		<ul class="org-ul">
 <li><a href="../../../tags.html"><i>icon-tags icon-white</i> Tags</a>
-
 </li>
+
 <li><a href="../../../archives.html"><i>icon-list icon-white</i> Archives</a>
-
 </li>
+
 <li><a href="../../../index.xml"><i>icon-rss icon-white</i> RSS</a>
 </li>
 </ul>
-
 
 	      </ul>
 	    </nav>
 	    <nav id="archives" class="span3">
 	      <h1><a href="../../../archives.html">Archives</a></h1>
 	      <ul>
-		<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a></li> <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_a-fibonacci-palindrome-problem.html">A Fibonacci Palindrome Problem</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
+		<li><a href="../../../posts/2013/02/05_formencode-2-compound-validation.html">FormEncode: (2) Compound Validation</a></li> <li><a href="../../../posts/2013/01/29_send-emails-via-marrowmailer.html">Send emails via marrow.mailer</a></li> <li><a href="../../../posts/2012/12/15_formencode-1-introduction.html">FormEncode: (1) Introduction</a></li> <li><a href="../../../posts/2012/12/15_score-my-mutt.html">Score My Mutt</a></li> <li><a href="../../../posts/2012/12/14_blog-setup.html">Blog Setup</a></li>
 	      </ul>
 	    </nav>
 	    <nav class="tags span3">
 	      <h1><a href="../../../tags/index.html">Tags</a></h1>
 	      <ul>
-  <li style="font-size: 80.00%;"><a href="../../../tags/algorithms.html">algorithms</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/fibonacci.html">fibonacci</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/palindrome.html">palindrome</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/setup.html">setup</a></li>
+  <li style="font-size: 150.00%;"><a href="../../../tags/email.html">email</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/formencode.html">formencode</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mailer.html">mailer</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/mutt.html">mutt</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/postfix.html">postfix</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/python.html">python</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/setup.html">setup</a></li>
 </ul>
 
 	    </nav>
