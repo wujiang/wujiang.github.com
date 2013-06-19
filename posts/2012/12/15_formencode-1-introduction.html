@@ -114,15 +114,15 @@ Suppose we have a form in our <a href="http://www.makotemplates.org/">mako</a> t
 
 <div class="org-src-container">
 
-<pre class="src src-html">  &lt;<span style="color: #8cd0d3;">form</span> <span style="color: #dfaf8f;">id</span>=<span style="color: #cc9393;">"formExample"</span> <span style="color: #dfaf8f;">method</span>=<span style="color: #cc9393;">"post"</span> <span style="color: #dfaf8f;">action</span>=<span style="color: #cc9393;">"${c.url.to.action}"</span>&gt;
-  &lt;<span style="color: #8cd0d3;">table</span>&gt;
-    &lt;<span style="color: #8cd0d3;">tr</span>&gt;
-      &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">id</span>=<span style="color: #cc9393;">"firstID"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"number1"</span> <span style="color: #dfaf8f;">value</span>=<span style="color: #cc9393;">""</span>/&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-      &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">id</span>=<span style="color: #cc9393;">"secondID"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"int1"</span> <span style="color: #dfaf8f;">value</span>=<span style="color: #cc9393;">""</span>/&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-      &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">id</span>=<span style="color: #cc9393;">"thirdID"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"string1"</span> <span style="color: #dfaf8f;">value</span>=<span style="color: #cc9393;">""</span>/&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-    &lt;/<span style="color: #8cd0d3;">tr</span>&gt;
-  &lt;/<span style="color: #8cd0d3;">table</span>&gt;
-&lt;/<span style="color: #8cd0d3;">form</span>&gt;
+<pre class="src src-html">  &lt;<span style="color: #8fb28f; font-weight: bold;">form</span> <span style="color: #f0dfaf;">id</span>=<span style="color: #6ca0a3;">"formExample"</span> <span style="color: #f0dfaf;">method</span>=<span style="color: #6ca0a3;">"post"</span> <span style="color: #f0dfaf;">action</span>=<span style="color: #6ca0a3;">"${c.url.to.action}"</span>&gt;
+  &lt;<span style="color: #8fb28f; font-weight: bold;">table</span>&gt;
+    &lt;<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
+      &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">id</span>=<span style="color: #6ca0a3;">"firstID"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"number1"</span> <span style="color: #f0dfaf;">value</span>=<span style="color: #6ca0a3;">""</span>/&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+      &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">id</span>=<span style="color: #6ca0a3;">"secondID"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"int1"</span> <span style="color: #f0dfaf;">value</span>=<span style="color: #6ca0a3;">""</span>/&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+      &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">id</span>=<span style="color: #6ca0a3;">"thirdID"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"string1"</span> <span style="color: #f0dfaf;">value</span>=<span style="color: #6ca0a3;">""</span>/&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+    &lt;/<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
+  &lt;/<span style="color: #8fb28f; font-weight: bold;">table</span>&gt;
+&lt;/<span style="color: #8fb28f; font-weight: bold;">form</span>&gt;
 </pre>
 </div>
 
@@ -133,13 +133,13 @@ this:
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">import</span> formencode
-<span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> validators
+<pre class="src src-python"><span style="color: #bc8383; font-weight: bold;">import</span> formencode
+<span style="color: #bc8383; font-weight: bold;">from</span> formencode <span style="color: #bc8383; font-weight: bold;">import</span> validators
 
-<span style="color: #f0dfaf; font-weight: bold;">class</span> <span style="color: #7cb8bb;">myFormValidation</span>(formencode.Schema):
-    <span style="color: #dfaf8f;">number1</span> = validators.Number(<span style="color: #93e0e3;">min</span>=0, <span style="color: #93e0e3;">max</span>=100, not_empty=<span style="color: #bfebbf;">False</span>)
-    <span style="color: #dfaf8f;">int1</span> = validators.Int(<span style="color: #93e0e3;">min</span>=30, <span style="color: #93e0e3;">max</span>=100)
-    <span style="color: #dfaf8f;">string1</span> = validators.String(<span style="color: #93e0e3;">max</span>=128, strip=<span style="color: #bfebbf;">True</span>)
+<span style="color: #bc8383; font-weight: bold;">class</span> <span style="color: #94bff3;">myFormValidation</span>(formencode.Schema):
+    <span style="color: #f0dfaf;">number1</span> = validators.Number(<span style="color: #8cd0d3;">min</span>=0, <span style="color: #8cd0d3;">max</span>=100, not_empty=<span style="color: #9fc59f;">False</span>)
+    <span style="color: #f0dfaf;">int1</span> = validators.Int(<span style="color: #8cd0d3;">min</span>=30, <span style="color: #8cd0d3;">max</span>=100)
+    <span style="color: #f0dfaf;">string1</span> = validators.String(<span style="color: #8cd0d3;">max</span>=128, strip=<span style="color: #9fc59f;">True</span>)
 </pre>
 </div>
 
@@ -151,10 +151,10 @@ validate all parameters from the above form.
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">def</span> <span style="color: #8cd0d3;">example_action</span>(<span style="color: #f0dfaf; font-weight: bold;">self</span>, **kwargs):
-    <span style="color: #cc9393;">"""Demo action to show how formencode works."""</span>
+<pre class="src src-python"><span style="color: #bc8383; font-weight: bold;">def</span> <span style="color: #8fb28f; font-weight: bold;">example_action</span>(<span style="color: #bc8383; font-weight: bold;">self</span>, **kwargs):
+    <span style="color: #8fb28f; font-style: italic;">"""Demo action to show how formencode works."""</span>
 
-    <span style="color: #dfaf8f;">example_form</span> = myFormValidation(request.params)
+    <span style="color: #f0dfaf;">example_form</span> = myFormValidation(request.params)
 </pre>
 </div>
 

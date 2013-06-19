@@ -178,32 +178,32 @@ how to configure it by understanding the following example.
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">sorting method</span>
-<span style="color: #93e0e3;">set</span> <span style="color: #dfaf8f;">sort</span> = <span style="color: #cc9393;">'threads'</span>
-<span style="color: #93e0e3;">set</span> <span style="color: #dfaf8f;">sort_aux</span> = <span style="color: #cc9393;">'score'</span>
+<pre class="src src-sh"><span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">sorting method</span>
+<span style="color: #8cd0d3;">set</span> <span style="color: #f0dfaf;">sort</span> = <span style="color: #6ca0a3;">'threads'</span>
+<span style="color: #8cd0d3;">set</span> <span style="color: #f0dfaf;">sort_aux</span> = <span style="color: #6ca0a3;">'score'</span>
 
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">score messages</span>
-<span style="color: #93e0e3;">set</span> <span style="color: #dfaf8f;">index_format</span>= <span style="color: #cc9393;">"%2N %Z %{%b %d} %-15.15F %s"</span>
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">score messages</span>
+<span style="color: #8cd0d3;">set</span> <span style="color: #f0dfaf;">index_format</span>= <span style="color: #6ca0a3;">"%2N %Z %{%b %d} %-15.15F %s"</span>
 unscore *
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">addressed to myself</span>
-score <span style="color: #cc9393;">"~p"</span> 7
-score <span style="color: #cc9393;">"!(~f trac@domain\.com) ~C name@domain\.com"</span> 7
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">replied to</span>
-score <span style="color: #cc9393;">"~Q"</span> 6
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">company group email</span>
-score <span style="color: #cc9393;">"~C yaname@domain\.com"</span> 6
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">ticket assignment</span>
-score <span style="color: #cc9393;">"~f yaaname@domain\.com"</span> 5
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">from me</span>
-score <span style="color: #cc9393;">"~P"</span> 4
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">mercurial push, commit</span>
-score <span style="color: #cc9393;">"~f mercurial"</span> 3
-score <span style="color: #cc9393;">"!(~s Informational) !(~s Warning) !(~s Error) !(~s Unknown) ~f dev"</span> 3
-score <span style="color: #cc9393;">"~f monitoring"</span> 3
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">new messages</span>
-score <span style="color: #cc9393;">"~N"</span> 2
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">flagged messages</span>
-score <span style="color: #cc9393;">"~F"</span> 1
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">addressed to myself</span>
+score <span style="color: #6ca0a3;">"~p"</span> 7
+score <span style="color: #6ca0a3;">"!(~f trac@domain\.com) ~C name@domain\.com"</span> 7
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">replied to</span>
+score <span style="color: #6ca0a3;">"~Q"</span> 6
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">company group email</span>
+score <span style="color: #6ca0a3;">"~C yaname@domain\.com"</span> 6
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">ticket assignment</span>
+score <span style="color: #6ca0a3;">"~f yaaname@domain\.com"</span> 5
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">from me</span>
+score <span style="color: #6ca0a3;">"~P"</span> 4
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">mercurial push, commit</span>
+score <span style="color: #6ca0a3;">"~f mercurial"</span> 3
+score <span style="color: #6ca0a3;">"!(~s Informational) !(~s Warning) !(~s Error) !(~s Unknown) ~f dev"</span> 3
+score <span style="color: #6ca0a3;">"~f monitoring"</span> 3
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">new messages</span>
+score <span style="color: #6ca0a3;">"~N"</span> 2
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">flagged messages</span>
+score <span style="color: #6ca0a3;">"~F"</span> 1
 </pre>
 </div>
 

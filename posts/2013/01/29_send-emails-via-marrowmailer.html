@@ -116,11 +116,11 @@ First, I retrieve all the calendar for this week from the database:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #dfaf8f;">now</span> = datetime.now()
-<span style="color: #dfaf8f;">nextweek</span> = now + timedelta(days=7)
-<span style="color: #dfaf8f;">cal</span> = (
+<pre class="src src-python"><span style="color: #f0dfaf;">now</span> = datetime.now()
+<span style="color: #f0dfaf;">nextweek</span> = now + timedelta(days=7)
+<span style="color: #f0dfaf;">cal</span> = (
     session.query(model.Calendar)
-        .<span style="color: #93e0e3;">filter</span>(between(model.Calendar.fake_date, now, nextweek))
+        .<span style="color: #8cd0d3;">filter</span>(between(model.Calendar.fake_date, now, nextweek))
 ).first()
 </pre>
 </div>
@@ -130,22 +130,22 @@ Then, setup the mailer via marrow.mailer
 </p>
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">start the mailer daemon. I use postfix as my email agent so here I use</span>
-<span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">localhost as host</span>
-<span style="color: #dfaf8f;">mailer</span> = Mailer(<span style="color: #93e0e3;">dict</span>(
-    transport = <span style="color: #93e0e3;">dict</span>(
-        use = <span style="color: #cc9393;">"smtp"</span>,
-        host = <span style="color: #cc9393;">"localhost"</span>),
-    manager = <span style="color: #93e0e3;">dict</span>()))
+<pre class="src src-python"><span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">start the mailer daemon. I use postfix as my email agent so here I use</span>
+<span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">localhost as host</span>
+<span style="color: #f0dfaf;">mailer</span> = Mailer(<span style="color: #8cd0d3;">dict</span>(
+    transport = <span style="color: #8cd0d3;">dict</span>(
+        use = <span style="color: #6ca0a3;">"smtp"</span>,
+        host = <span style="color: #6ca0a3;">"localhost"</span>),
+    manager = <span style="color: #8cd0d3;">dict</span>()))
 mailer.start()
 
-<span style="color: #dfaf8f;">message</span> = Message(author=<span style="color: #cc9393;">"Foo Bar <a href="mailto:foo%40bar.org">&lt;foo@bar.org&gt;</a>"</span>,
+<span style="color: #f0dfaf;">message</span> = Message(author=<span style="color: #6ca0a3;">"Foo Bar <a href="mailto:foo%40bar.org">&lt;foo@bar.org&gt;</a>"</span>,
                   to=cal.email,
-                  cc=[<span style="color: #cc9393;">"woot@bar.org"</span>,
-                      <span style="color: #cc9393;">"bar@bar.org"</span>],
-                  bcc=<span style="color: #cc9393;">"zoo@bar.org"</span>)
-<span style="color: #dfaf8f;">message.subject</span> = subject
-<span style="color: #dfaf8f;">message.plain</span> = body
+                  cc=[<span style="color: #6ca0a3;">"woot@bar.org"</span>,
+                      <span style="color: #6ca0a3;">"bar@bar.org"</span>],
+                  bcc=<span style="color: #6ca0a3;">"zoo@bar.org"</span>)
+<span style="color: #f0dfaf;">message.subject</span> = subject
+<span style="color: #f0dfaf;">message.plain</span> = body
 mailer.send(message)
 
 mailer.stop()

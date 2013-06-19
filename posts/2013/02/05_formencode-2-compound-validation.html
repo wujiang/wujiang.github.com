@@ -110,15 +110,15 @@ matching or password matching.
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">import</span> formencode
-<span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> validators <span style="color: #f0dfaf; font-weight: bold;">as</span> v
+<pre class="src src-python"><span style="color: #bc8383; font-weight: bold;">import</span> formencode
+<span style="color: #bc8383; font-weight: bold;">from</span> formencode <span style="color: #bc8383; font-weight: bold;">import</span> validators <span style="color: #bc8383; font-weight: bold;">as</span> v
 
 
-<span style="color: #f0dfaf; font-weight: bold;">class</span> <span style="color: #7cb8bb;">Registration</span>(formencode.Schema):
-    <span style="color: #dfaf8f;">email_input</span> = v.Email(strip=<span style="color: #bfebbf;">True</span>, resolve_domain=<span style="color: #bfebbf;">True</span>)
-    <span style="color: #dfaf8f;">email_input_confirm</span> = v.Email(strip=<span style="color: #bfebbf;">True</span>, resolve_domain=<span style="color: #bfebbf;">True</span>)
-    <span style="color: #dfaf8f;">chained_validators</span> = [v.FieldsMatch(<span style="color: #cc9393;">"email_input"</span>,
-                                        <span style="color: #cc9393;">"email_input_confirm"</span>)]
+<span style="color: #bc8383; font-weight: bold;">class</span> <span style="color: #94bff3;">Registration</span>(formencode.Schema):
+    <span style="color: #f0dfaf;">email_input</span> = v.Email(strip=<span style="color: #9fc59f;">True</span>, resolve_domain=<span style="color: #9fc59f;">True</span>)
+    <span style="color: #f0dfaf;">email_input_confirm</span> = v.Email(strip=<span style="color: #9fc59f;">True</span>, resolve_domain=<span style="color: #9fc59f;">True</span>)
+    <span style="color: #f0dfaf;">chained_validators</span> = [v.FieldsMatch(<span style="color: #6ca0a3;">"email_input"</span>,
+                                        <span style="color: #6ca0a3;">"email_input_confirm"</span>)]
 </pre>
 </div>
 
@@ -137,16 +137,16 @@ the input from <code>string</code> to <code>int</code> via <code>Int</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">import</span> formencode
-<span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> compound <span style="color: #f0dfaf; font-weight: bold;">as</span> c
-<span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> validators <span style="color: #f0dfaf; font-weight: bold;">as</span> v
+<pre class="src src-python"><span style="color: #bc8383; font-weight: bold;">import</span> formencode
+<span style="color: #bc8383; font-weight: bold;">from</span> formencode <span style="color: #bc8383; font-weight: bold;">import</span> compound <span style="color: #bc8383; font-weight: bold;">as</span> c
+<span style="color: #bc8383; font-weight: bold;">from</span> formencode <span style="color: #bc8383; font-weight: bold;">import</span> validators <span style="color: #bc8383; font-weight: bold;">as</span> v
 
 
-<span style="color: #f0dfaf; font-weight: bold;">class</span> <span style="color: #7cb8bb;">Calculator</span>(formencode.Schema):
-    <span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">All validates backwards</span>
-    <span style="color: #dfaf8f;">numerator</span> = c.All(v.OneOf(<span style="color: #93e0e3;">range</span>(100)), v.Int())
-    <span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">Pipe validates forwards</span>
-    <span style="color: #7f9f7f;"># </span><span style="color: #7f9f7f;">numerator = c.Pipe(v.Int(), v.OneOf(range(100)))</span>
+<span style="color: #bc8383; font-weight: bold;">class</span> <span style="color: #94bff3;">Calculator</span>(formencode.Schema):
+    <span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">All validates backwards</span>
+    <span style="color: #f0dfaf;">numerator</span> = c.All(v.OneOf(<span style="color: #8cd0d3;">range</span>(100)), v.Int())
+    <span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">Pipe validates forwards</span>
+    <span style="color: #9fc59f;"># </span><span style="color: #7f9f7f; font-style: italic;">numerator = c.Pipe(v.Int(), v.OneOf(range(100)))</span>
 </pre>
 </div>
 
@@ -166,29 +166,29 @@ Here is how our form looks like:
 
 <div class="org-src-container">
 
-<pre class="src src-html">&lt;<span style="color: #8cd0d3;">form</span>&gt;
-    &lt;<span style="color: #8cd0d3;">table</span>&gt;
-        &lt;<span style="color: #8cd0d3;">tr</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-0.first_name"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-0.last_name"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-0.email"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-0.phone"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-        &lt;/<span style="color: #8cd0d3;">tr</span>&gt;
-        &lt;<span style="color: #8cd0d3;">tr</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-1.first_name"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-1.last_name"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-1.email"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-1.phone"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-        &lt;/<span style="color: #8cd0d3;">tr</span>&gt;
-        &lt;<span style="color: #8cd0d3;">tr</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-2.first_name"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-2.last_name"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-2.email"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-            &lt;<span style="color: #8cd0d3;">td</span>&gt;&lt;<span style="color: #8cd0d3;">input</span> <span style="color: #dfaf8f;">type</span>=<span style="color: #cc9393;">"text"</span> <span style="color: #dfaf8f;">name</span>=<span style="color: #cc9393;">"employee-2.phone"</span>&gt;&lt;/<span style="color: #8cd0d3;">td</span>&gt;
-        &lt;/<span style="color: #8cd0d3;">tr</span>&gt;
+<pre class="src src-html">&lt;<span style="color: #8fb28f; font-weight: bold;">form</span>&gt;
+    &lt;<span style="color: #8fb28f; font-weight: bold;">table</span>&gt;
+        &lt;<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-0.first_name"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-0.last_name"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-0.email"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-0.phone"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+        &lt;/<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
+        &lt;<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-1.first_name"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-1.last_name"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-1.email"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-1.phone"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+        &lt;/<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
+        &lt;<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-2.first_name"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-2.last_name"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-2.email"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+            &lt;<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;&lt;<span style="color: #8fb28f; font-weight: bold;">input</span> <span style="color: #f0dfaf;">type</span>=<span style="color: #6ca0a3;">"text"</span> <span style="color: #f0dfaf;">name</span>=<span style="color: #6ca0a3;">"employee-2.phone"</span>&gt;&lt;/<span style="color: #8fb28f; font-weight: bold;">td</span>&gt;
+        &lt;/<span style="color: #8fb28f; font-weight: bold;">tr</span>&gt;
         ...
-    &lt;/<span style="color: #8cd0d3;">table</span>&gt;
-&lt;/<span style="color: #8cd0d3;">form</span>&gt;
+    &lt;/<span style="color: #8fb28f; font-weight: bold;">table</span>&gt;
+&lt;/<span style="color: #8fb28f; font-weight: bold;">form</span>&gt;
 </pre>
 </div>
 
@@ -198,20 +198,20 @@ The validation class definition will be
 
 <div class="org-src-container">
 
-<pre class="src src-python"><span style="color: #f0dfaf; font-weight: bold;">import</span> formencode
-<span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> validators <span style="color: #f0dfaf; font-weight: bold;">as</span> v
-<span style="color: #f0dfaf; font-weight: bold;">from</span> formencode <span style="color: #f0dfaf; font-weight: bold;">import</span> national <span style="color: #f0dfaf; font-weight: bold;">as</span> n
+<pre class="src src-python"><span style="color: #bc8383; font-weight: bold;">import</span> formencode
+<span style="color: #bc8383; font-weight: bold;">from</span> formencode <span style="color: #bc8383; font-weight: bold;">import</span> validators <span style="color: #bc8383; font-weight: bold;">as</span> v
+<span style="color: #bc8383; font-weight: bold;">from</span> formencode <span style="color: #bc8383; font-weight: bold;">import</span> national <span style="color: #bc8383; font-weight: bold;">as</span> n
 
 
-<span style="color: #f0dfaf; font-weight: bold;">class</span> <span style="color: #7cb8bb;">Employee</span>(formencode.SchemaElement):
-    <span style="color: #dfaf8f;">first_name</span> = v.String(strip=<span style="color: #bfebbf;">True</span>)
-    <span style="color: #dfaf8f;">last_name</span> = v.String(strip=<span style="color: #bfebbf;">True</span>)
-    <span style="color: #dfaf8f;">email</span> = v.String(strip=<span style="color: #bfebbf;">True</span>, resolve_domain=<span style="color: #bfebbf;">True</span>)
-    <span style="color: #dfaf8f;">phone</span> = n.USPhoneNumber()
+<span style="color: #bc8383; font-weight: bold;">class</span> <span style="color: #94bff3;">Employee</span>(formencode.SchemaElement):
+    <span style="color: #f0dfaf;">first_name</span> = v.String(strip=<span style="color: #9fc59f;">True</span>)
+    <span style="color: #f0dfaf;">last_name</span> = v.String(strip=<span style="color: #9fc59f;">True</span>)
+    <span style="color: #f0dfaf;">email</span> = v.String(strip=<span style="color: #9fc59f;">True</span>, resolve_domain=<span style="color: #9fc59f;">True</span>)
+    <span style="color: #f0dfaf;">phone</span> = n.USPhoneNumber()
 
 
-<span style="color: #f0dfaf; font-weight: bold;">class</span> <span style="color: #7cb8bb;">Employees</span>(formencode.Schema):
-    <span style="color: #dfaf8f;">employee</span> = formencode.ForEach(Employee())
+<span style="color: #bc8383; font-weight: bold;">class</span> <span style="color: #94bff3;">Employees</span>(formencode.Schema):
+    <span style="color: #f0dfaf;">employee</span> = formencode.ForEach(Employee())
 </pre>
 </div>
 
