@@ -200,7 +200,7 @@ The validation class definition will be
 <span style="color: #bc8383; font-weight: bold;">from</span> formencode <span style="color: #bc8383; font-weight: bold;">import</span> national <span style="color: #bc8383; font-weight: bold;">as</span> n
 
 
-<span style="color: #bc8383; font-weight: bold;">class</span> <span style="color: #94bff3;">Employee</span>(formencode.SchemaElement):
+<span style="color: #bc8383; font-weight: bold;">class</span> <span style="color: #94bff3;">Employee</span>(formencode.Schema):
     <span style="color: #f0dfaf;">first_name</span> = v.String(strip=<span style="color: #9fc59f;">True</span>)
     <span style="color: #f0dfaf;">last_name</span> = v.String(strip=<span style="color: #9fc59f;">True</span>)
     <span style="color: #f0dfaf;">email</span> = v.String(strip=<span style="color: #9fc59f;">True</span>, resolve_domain=<span style="color: #9fc59f;">True</span>)
@@ -292,4 +292,3 @@ The validation class definition will be
       </div>
 </body>
 </html>
-
